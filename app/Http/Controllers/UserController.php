@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-class BookController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,6 +23,12 @@ class BookController extends Controller
     {
         // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
+//    dd('test');
+      return view('users.index', [
+        'users' => $this->getUsers()
+      ]);
+
+
 
        return view('welcome', [
          'books' => $this->getBooks(),
@@ -52,11 +59,17 @@ class BookController extends Controller
     return view('books.index')->with('books', $books);
 
 
+//        return view('books.book')->with('books', $books);
+
   }
 
 //  for the search query
   public function getBooks() {
      return Book::latest()->filter()->paginate(5);
+  }
+
+  public function getUsers() {
+      return User::all();
   }
 
 
@@ -120,33 +133,35 @@ class BookController extends Controller
 
 //    replace the primary key with the uuid of each book
 //route model binding. changed $id to $uuid to Book $book
-    public function show(Book $book)
+    public function show(User $user)
     {
 //      $book = Book::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
 //        if ($book->user_id != Auth::id()) {
 //          return abort(403);
 //        }
-        return view('books.show')->with('book', $book);
+
+      $data['user'] = $user;
+        return view('users.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
-    public function edit(Book $book)
+    public function edit(User $user)
     {
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-          return abort(403);
-        }
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//          return abort(403);
+//        }
 
 //      if (auth()->user()?->name !== 'Ryan' ) {
 //        abort(403);
 //      }
 
-      return view('books.edit')->with('book', $book);
+      return view('users.edit')->with('user', $user);
 
     }
 
@@ -159,12 +174,12 @@ class BookController extends Controller
      */
 
 //    $id param changed to Book $book
-    public function update(Request $request, Book $book)
+    public function update(Request $request, User $user)
     {
 //        dd($request);
 //    if its the authorized user, all of this is done
 
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+      if (auth()->user()?->name !== 'Ryan' ) {
         return abort(403);
       }
 
@@ -173,22 +188,20 @@ class BookController extends Controller
 //      }
 
       $attributes = request()->validate([
-        'title' => 'required',
-        'thumbnail' => 'required|image',
-        'slug' => 'required',
-        'description' => 'required',
-        'pdf' => 'required|mimes:pdf',
-        'category_id' => ['required', Rule::exists('categories', 'id')]
+        'name' => 'required',
+        'password' => 'required',
+
+        'email' => 'required',
       ]);
 
 
-      $attributes['uuid'] = Str::uuid();
-      $attributes['user_id'] = auth()->id();
-      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
-      $attributes['pdf'] = \request()->file('pdf')->store('pdfs');
+//      $attributes['uuid'] = Str::uuid();
+//      $attributes['user_id'] = auth()->id();
+//      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
+//      $attributes['pdf'] = \request()->file('pdf')->store('pdfs');
 
-      $book->update($attributes);
-      return to_route('books.show', $book)->with('success', 'Book updated');
+      $user->update($attributes);
+      return to_route('users.show', $user)->with('success', 'User updated');
 
     }
 

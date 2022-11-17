@@ -22,22 +22,25 @@
                   </td>
 
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="/admin/books/{{ $book->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                    <a href="{{ route('books.edit', $book) }}" class="btn-link ml-auto">Edit</a>
                   </td>
 
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <form method="POST" action="/admin/books/{{ $book->id }}">
+                    <form action="{{ route('books.destroy', $book) }}" method="POST">
+                      @method('delete')
                       @csrf
-                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete this book?')">Delete Book</button>
 
-                      <button class="text-xs text-gray-400">Delete</button>
                     </form>
+
                   </td>
                 </tr>
               @endforeach
+
               </tbody>
             </table>
           </div>
+          {{ $books->links() }}
         </div>
       </div>
     </div>

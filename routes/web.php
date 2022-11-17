@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminBookController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +30,15 @@ Route::get('/', [BookController::class, 'index']);
 Route::get('/mybooks', [BookController::class, 'mybooks']);
 
 // admin route
-Route::get('admin/books', [AdminBookController::class, 'index']);
-Route::get('admin/books/create', [AdminBookController::class, 'create']);
+Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin');
+Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin');
+Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin');
 
+// display users for admin control/ edit delete ect
+//Route::get('admin/users', [AdminUserController::class, 'index'])->middleware('admin');
+
+
+Route::resource('users', UserController::class)->middleware('admin');
 
 Route::resource('books', BookController::class)->middleware('auth');
 Route::resource('categories', CategoryController::class)->middleware('auth');
