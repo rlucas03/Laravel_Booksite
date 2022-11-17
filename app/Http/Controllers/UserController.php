@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -194,7 +195,7 @@ class UserController extends Controller
         'email' => 'required',
       ]);
 
-
+        $attributes['password'] = Hash::make($request['password']);
 //      $attributes['uuid'] = Str::uuid();
 //      $attributes['user_id'] = auth()->id();
 //      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
