@@ -214,17 +214,17 @@ class UserController extends Controller
      */
 
 //    $id param changed to Book $book because we are injecting the entire model
-    public function destroy(Book $book)
+    public function destroy(User $user)
     {
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
 //      }
 
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-        return abort(403);
-      }
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//        return abort(403);
+//      }
 
-      $book->delete();
-      return to_route('books.index')->with('success', 'Book deleted');
+      $user->delete();
+      return to_route('users.index')->with('success', 'User deleted');
     }
 }

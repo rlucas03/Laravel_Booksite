@@ -100,10 +100,15 @@
                                     {{ $book->user->name }}
                                   </p>
 
+                                  @auth
                                   <p class="mt-2">
                                     Pdf:
-                                    {{ $book->pdf }}
+                                    <a href=" {{asset('storage/'.$book->pdf)}}" target="_blank" download="{{ $book->pdf }}">download</a>
                                   </p>
+
+                                  @else
+                                    <p class="mt-2">Login to download!</p>
+                                  @endauth
 
 
                                 </div>

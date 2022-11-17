@@ -26,6 +26,7 @@ class Book extends Model
           ->where('title', 'like', '%' . request('search') . '%')
           ->orWhere('description', 'like', '%' . request('search') . '%')
           ->orWhere('category_id', 'like', '%' . request('search') . '%');
+//          ->orWhere('user_id', 'like', '%' . request('search') . '%');
       }
     }
 
@@ -43,6 +44,10 @@ class Book extends Model
 //  like any other property of the book model.. a book belongs to user
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function showOnHomePage($no_of_books = 5) {
+      return Book::latest()->filter()->paginate($no_of_books);
     }
 }
 

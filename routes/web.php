@@ -26,13 +26,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BookController::class, 'index']);
 
 
-
-Route::get('/mybooks', [BookController::class, 'mybooks']);
+// Todo - naming conventions are important. All methods should be camel-cased and all URIs should be dashed
+// Todo - make sure all routes are named and there are no hard-coded urls in the views
+Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 
 // admin route
 Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin');
 Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin');
 Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin');
+
+// Todo - the following is unnecessary. Figure out why the destroy method for users is not working
+//Route::delete('users/{user}', [UserController::class, 'destroy'])->middleware('admin');
 
 // display users for admin control/ edit delete ect
 //Route::get('admin/users', [AdminUserController::class, 'index'])->middleware('admin');
@@ -41,6 +45,8 @@ Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->mid
 Route::resource('users', UserController::class)->middleware('admin');
 
 Route::resource('books', BookController::class)->middleware('auth');
+
+// Todo - non-admins should not have access to create/update/delete
 Route::resource('categories', CategoryController::class)->middleware('auth');
 
 // to create a new book

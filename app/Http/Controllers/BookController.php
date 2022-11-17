@@ -23,40 +23,24 @@ class BookController extends Controller
         // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
 
+      //Todo - make the controllers slimmer and models fatter
        return view('welcome', [
-         'books' => $this->getBooks(),
+         'books' => Book::showOnHomePage(2),
          'categories' => Category::all()
        ]);
-
-//        $books = Book::all();
-//
-////        return view('welcome')->with('books', $books);
-//
-//             return view('welcome', [
-//            'books' => Book::latest()->paginate(5)
-//        ]);
-
-//        return view('books.book')->with('books', $books);
-
 
     }
 
 
-  public function mybooks()
+  public function myBooks()
   {
+
     // fetch books from the db & pass content to view to display them
-
 //        using eloquent, get all the books of this logged in user and display them
-    $books = Book::where('user_id',Auth::id() )->get();
-
+//    $books = Book::where('user_id',Auth::id() )->get();
+    $books = \auth()->user()->books;
     return view('books.index')->with('books', $books);
 
-
-  }
-
-//  for the search query
-  public function getBooks() {
-     return Book::latest()->filter()->paginate(5);
   }
 
 
@@ -84,7 +68,6 @@ class BookController extends Controller
 //      return 'done ' . $path;
 //
 //        dd(request()->all());
-//      return \request()->all();
 
       $attributes = request()->validate([
         'title' => 'required',
@@ -94,7 +77,6 @@ class BookController extends Controller
         'pdf' => 'required|mimes:pdf',
         'category_id' => ['required', Rule::exists('categories', 'id')]
       ]);
-//        Yay
 //      dd('success validation succeeded');
 
 
@@ -122,10 +104,7 @@ class BookController extends Controller
 //route model binding. changed $id to $uuid to Book $book
     public function show(Book $book)
     {
-//      $book = Book::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
-//        if ($book->user_id != Auth::id()) {
-//          return abort(403);
-//        }
+
         return view('books.show')->with('book', $book);
     }
 

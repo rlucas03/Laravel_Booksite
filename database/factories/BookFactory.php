@@ -28,6 +28,7 @@ class BookFactory extends Factory
             'category_id' => rand(1,10),
 //            'category_id' => $this->faker->word,
             'slug' => $this->faker->word,
+            'uuid' => $this->faker->word,
             'title' => $this->faker->sentence,
             'thumbnail' => $this->faker->word,
             'description' => $this->faker->sentence,

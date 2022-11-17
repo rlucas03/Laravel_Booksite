@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Categories Book') }}
+{{--      {{ __('Categories Book') }}--}}
     </h2>
   </x-slot>
 
@@ -23,11 +23,12 @@
 
         <h2 class="font-bold text-2xl">
           Book title:
-          {{ $category->title }}
+          {{ $book->title }}
         </h2>
+
         <p class="mt-2">
           Description:
-          {{ Str::limit($category->description, 70) }}
+          {{ Str::limit($book->description, 70) }}
         </p>
 
         <p class="mt-2">
@@ -37,7 +38,7 @@
 
         <p class="mt-2">
           Author:
-{{--          {{ $category->books->user->name }}--}}
+          {{ $book->user->name }}
         </p>
 
         <p class="mt-2">

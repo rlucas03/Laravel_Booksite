@@ -22,6 +22,16 @@
                         {{ 'edit' }}
 
                       </a>
+
+                      <form method="POST" action="{{ route('users.destroy', $data['user']) }}">
+                        @csrf
+                        @method('DELETE')
+{{--                        <a href="{{ route('users.destroy', $data['user']) }}">--}}
+{{--                          {{ 'delete' }}--}}
+
+{{--                        </a>--}}
+                        <button>Delete</button>
+                      </form>
                     </div>
                   </div>
                 </td>

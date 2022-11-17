@@ -56,8 +56,7 @@
 
                   <p class="mt-2">
                     Pdf:
-{{--                    {{ $book->pdf }}--}}
-                    <a href=" {{asset('storage/'.$book->pdf)}}" download="{{ $book->pdf }}">download</a>
+                    <a href=" {{asset('storage/'.$book->pdf)}}" target="_blank" download="{{ $book->pdf }}">download</a>
                   </p>
 
                 </div>
