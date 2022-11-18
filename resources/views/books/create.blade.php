@@ -19,117 +19,153 @@
               <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
 
-              <div class="mb-6">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                  for="Title"
-                  >
-                      Title
-
-                  </label>
-
-                  <input class="border border-gray-400 p-2 w-full"
-                         type="text"
-                         name="title"
-                         id="title"
-                         value="{{ old('title') }}"
-                         required
-                         >
-
-                  @error('title')
-                  <p class="text-red-500">{{ $message }}</p>
-                  @enderror
-
-              </div>
-
-            <div class="mb-6">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                  for="Slug"
-                  >
-                      Slug
-
-                  </label>
-
-                  <input class="border border-gray-400 p-2 w-full"
-                         type="text"
-                         name="slug"
-                         id="slug"
-                         value="{{ old('slug') }}"
-
-                         required
-                         >
-
-                  @error('slug')
-                  <p class="text-red-500">{{ $message }}</p>
-                  @enderror
-
-              </div>
-
-              <div class="mb-6">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                  for="Thumbnail"
-                  >
-                      Thumbnail
-
-                  </label>
-
-                  <input class="border border-gray-400 p-2 w-full"
-                         type="file"
-                         name="thumbnail"
-                         id="thumbnail"
-
-                         >
-
-                  @error('thumbnail')
-                  <p class="text-red-500">{{ $message }}</p>
-                  @enderror
-
-              </div>
-
-              <div class="mb-6">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                  for="Description"
-                  >
-                      Description
-
-                  </label>
-
-                  <input class="border border-gray-400 p-2 w-full"
-                         type="text"
-                         name="description"
-                         id="description"
-                         value="{{ old('description') }}"
 
 
-                  >
+{{--              <div class="mb-6">--}}
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                  for="Title"--}}
+{{--                  >--}}
+{{--                      Title--}}
 
-                  @error('description')
-                  <p class="text-red-500">{{ $message }}</p>
-                  @enderror
+{{--                  </label>--}}
 
-              </div>
+{{--                  <input class="border border-gray-400 p-2 w-full"--}}
+{{--                         type="text"--}}
+{{--                         name="title"--}}
+{{--                         id="title"--}}
+{{--                         value="{{ old('title') }}"--}}
+{{--                         required--}}
+{{--                         >--}}
 
-              <div class="mb-6">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                  for="Book"
-                  >
-                      Book pdf
+{{--                  @error('title')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                  @enderror--}}
 
-                  </label>
+{{--              </div>--}}
 
-                  <input class="border border-gray-400 p-2 w-full"
-                         type="file"
-                         name="pdf"
-                         id="pdf"
+            <div class="mt-4">
+              <x-input-label for="slug" :value="__('Slug')" />
 
-                         >
+              <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autofocus />
 
-                  @error('pdf')
-                  <p class="text-red-500">{{ $message }}</p>
-                  @enderror
+              <x-input-error :messages="$errors->get('slug')" class="mt-2" />
+            </div>
 
-              </div>
+{{--            <div class="mb-6">--}}
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                  for="Slug"--}}
+{{--                  >--}}
+{{--                      Slug--}}
 
-              <div class="mb-6">
+{{--                  </label>--}}
+
+{{--                  <input class="border border-gray-400 p-2 w-full"--}}
+{{--                         type="text"--}}
+{{--                         name="slug"--}}
+{{--                         id="slug"--}}
+{{--                         value="{{ old('slug') }}"--}}
+
+{{--                         required--}}
+{{--                         >--}}
+
+{{--                  @error('slug')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                  @enderror--}}
+
+{{--              </div>--}}
+
+{{--              <div class="mb-6">--}}
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                  for="Thumbnail"--}}
+{{--                  >--}}
+{{--                      Thumbnail--}}
+
+{{--                  </label>--}}
+
+{{--                  <input class="border border-gray-400 p-2 w-full"--}}
+{{--                         type="file"--}}
+{{--                         name="thumbnail"--}}
+{{--                         id="thumbnail"--}}
+
+{{--                         >--}}
+
+{{--                  @error('thumbnail')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                  @enderror--}}
+
+{{--              </div>--}}
+
+
+            <div class="mt-4">
+              <x-input-label for="thumbnail" :value="__('Thumbnail')" />
+
+              <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" :value="old('thumbnail')" required autofocus />
+
+              <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
+            </div>
+
+
+{{--              <div class="mb-6">--}}
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                  for="Description"--}}
+{{--                  >--}}
+{{--                      Description--}}
+
+{{--                  </label>--}}
+
+{{--                  <input class="border border-gray-400 p-2 w-full"--}}
+{{--                         type="text"--}}
+{{--                         name="description"--}}
+{{--                         id="description"--}}
+{{--                         value="{{ old('description') }}"--}}
+
+
+{{--                  >--}}
+
+{{--                  @error('description')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                  @enderror--}}
+
+{{--              </div>--}}
+
+            <div class="mt-4">
+              <x-input-label for="description" :value="__('Description')" />
+
+              <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus />
+
+              <x-input-error :messages="$errors->get('description')" class="mt-2" />
+            </div>
+
+{{--              <div class="mb-6">--}}
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                  for="Book"--}}
+{{--                  >--}}
+{{--                      Book pdf--}}
+
+{{--                  </label>--}}
+
+{{--                  <input class="border border-gray-400 p-2 w-full"--}}
+{{--                         type="file"--}}
+{{--                         name="pdf"--}}
+{{--                         id="pdf"--}}
+
+{{--                         >--}}
+
+{{--                  @error('pdf')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                  @enderror--}}
+
+{{--              </div>--}}
+
+            <div class="mt-4">
+              <x-input-label for="Book" :value="__('Book')" />
+
+              <x-text-input id="pdf" class="block mt-1 w-full" type="file" name="pdf" :value="old('pdf')" required autofocus />
+
+              <x-input-error :messages="$errors->get('pdf')" class="mt-2" />
+            </div>
+
+              <div class="mt-4">
                   <label class="block mb-2 uppercase font-bold text-xs"
                          for="Category"
                   >
@@ -150,12 +186,12 @@
                   <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
-                <div class="mb-6">
+                <div class="mt-4">
 
-                  <button type="submit" class="">
-                    Submit
 
-                  </button>
+                  <x-primary-button class="ml-3">
+                    {{ __('Submit') }}
+                  </x-primary-button>
 
                 </div>
 
