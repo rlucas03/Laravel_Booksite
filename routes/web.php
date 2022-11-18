@@ -31,9 +31,9 @@ Route::get('/', [BookController::class, 'index']);
 Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 
 // admin route
-Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin');
-Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin');
-Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin');
+Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin')->name('admin-books');
+Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-create');
+Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin')->name('admin-edit');
 
 // Todo - the following is unnecessary. Figure out why the destroy method for users is not working
 //Route::delete('users/{user}', [UserController::class, 'destroy'])->middleware('admin');

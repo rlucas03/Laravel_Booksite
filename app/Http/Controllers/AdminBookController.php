@@ -37,7 +37,7 @@ class AdminBookController extends Controller
 
     public function create() {
 
-// only admin ryan can access admin/books/create form
+// do we have an authenticated user and is their name == admin 'Ryan'
       if (auth()->user()?->name !== 'Ryan' ) {
         abort(403);
       }

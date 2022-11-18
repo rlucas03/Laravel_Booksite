@@ -27,7 +27,7 @@
         >
 
         @error('title')
-        <p class="text-red-500">{{ $message }}</p>
+          <p class="text-red-500">{{ $message }}</p>
         @enderror
 
       </div>
@@ -50,7 +50,7 @@
         >
 
         @error('slug')
-        <p class="text-red-500">{{ $message }}</p>
+          <p class="text-red-500">{{ $message }}</p>
         @enderror
 
       </div>

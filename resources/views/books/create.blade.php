@@ -10,6 +10,15 @@
           <form method="POST" action="{{route('books.store')}}" enctype="multipart/form-data" >
               @csrf
 
+
+            <div>
+              <x-input-label for="title" :value="__('Title')" />
+
+              <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('name')" required autofocus />
+
+              <x-input-error :messages="$errors->get('title')" class="mt-2" />
+            </div>
+
               <div class="mb-6">
                   <label class="block mb-2 uppercase font-bold text-xs"
                   for="Title"
