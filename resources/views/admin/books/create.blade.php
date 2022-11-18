@@ -1,6 +1,6 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-
+{{--this file can perhaps be deleted..got books create already--}}
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('New book') }}

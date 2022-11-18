@@ -87,16 +87,16 @@ class DatabaseSeeder extends Seeder
 //        ]);
 
       // create a new user that has between 0-3 books associated with them
-//      $user = User::factory()
-//        ->has(Book::factory()->count(rand(0,3)))
-//        ->create();
+      $user = User::factory(10)
+        ->has(Book::factory()->count(rand(0,3)))
+        ->create();
 
 
 
 
 //
 //        this creates a corresponding book, category and user
-        Book::factory(2)->create();
+//        Book::factory(2)->create();
 //
 //
 //        $books = Book::factory()

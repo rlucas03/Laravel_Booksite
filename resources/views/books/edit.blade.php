@@ -11,50 +11,65 @@
       @method('put')
       @csrf
 
-      <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs"
-               for="Title"
-        >
-          Title
+      <div>
+        <x-input-label for="title" :value="__('Title')" />
 
-        </label>
+        <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{old('title', $book->title)}}" required autofocus />
 
-        <input class="border border-gray-400 p-2 w-full"
-               type="text"
-               name="title"
-               id="title"
-               value="{{ old('title', $book->title) }}"
-               required
-        >
-
-        @error('title')
-        <p class="text-red-500">{{ $message }}</p>
-        @enderror
-
+        <x-input-error :messages="$errors->get('title')" class="mt-2" />
       </div>
 
-      <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs"
-               for="Slug"
-        >
-          Slug
+{{--      <div class="mb-6">--}}
+{{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--               for="Title"--}}
+{{--        >--}}
+{{--          Title--}}
 
-        </label>
+{{--        </label>--}}
 
-        <input class="border border-gray-400 p-2 w-full"
-               type="text"
-               name="slug"
-               id="slug"
-               value="{{ old('slug', $book->slug) }}"
+{{--        <input class="border border-gray-400 p-2 w-full"--}}
+{{--               type="text"--}}
+{{--               name="title"--}}
+{{--               id="title"--}}
+{{--               value="{{ old('title', $book->title) }}"--}}
+{{--               required--}}
+{{--        >--}}
 
-               required
-        >
+{{--        @error('title')--}}
+{{--        <p class="text-red-500">{{ $message }}</p>--}}
+{{--        @enderror--}}
 
-        @error('slug')
-        <p class="text-red-500">{{ $message }}</p>
-        @enderror
+{{--      </div>--}}
 
+      <div>
+        <x-input-label for="slug" :value="__('Slug')" />
+
+        <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" value="{{old('slug', $book->slug)}}" required autofocus />
+
+        <x-input-error :messages="$errors->get('slug')" class="mt-2" />
       </div>
+
+{{--      <div class="mb-6">--}}
+{{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--               for="Slug"--}}
+{{--        >--}}
+{{--          Slug--}}
+
+{{--        </label>--}}
+
+{{--        <input class="border border-gray-400 p-2 w-full"--}}
+{{--               type="text"--}}
+{{--               name="slug"--}}
+{{--               id="slug"--}}
+{{--               value="{{ old('slug', $book->slug) }}"--}}
+
+{{--               required--}}
+{{--        >--}}
+
+{{--        @error('slug')--}}
+{{--        <p class="text-red-500">{{ $message }}</p>--}}
+{{--        @enderror--}}
+{{--      </div>--}}
 
       <div class="mb-6">
         <label class="block mb-2 uppercase font-bold text-xs"

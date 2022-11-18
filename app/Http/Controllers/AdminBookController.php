@@ -18,11 +18,6 @@ class AdminBookController extends Controller
         abort(403);
       }
 
-
-//      if (auth()->user()->name !== 'Ryan' ) {
-//        abort(403);
-//      }
-
       return view('admin.books.index', [
         'books' => Book::paginate(50)
       ]);
@@ -35,24 +30,23 @@ class AdminBookController extends Controller
 //      ]);
 //    }
 
-    public function create() {
-
-// do we have an authenticated user and is their name == admin 'Ryan'
-      if (auth()->user()?->name !== 'Ryan' ) {
-        abort(403);
-      }
-      return view('admin.books.create');
-    }
-
+//    public function create() {
+//
+//// do we have an authenticated user and is their name == admin 'Ryan'
+//      if (auth()->user()?->name !== 'Ryan' ) {
+//        abort(403);
+//      }
+//      return view('admin.books.create');
+//    }
 
   //    $id param changed to Book $book
-  public function edit(Book $book)
-  {
-    if ($book->user_id != Auth::id()) {
-      return abort(403);
-    }
-
-    return view('admin.books.edit')->with('book', $book);
-
-  }
+//  public function edit(Book $book)
+//  {
+//    if ($book->user_id != Auth::id()) {
+//      return abort(403);
+//    }
+//
+//    return view('admin.books.edit')->with('book', $book);
+//
+//  }
 }

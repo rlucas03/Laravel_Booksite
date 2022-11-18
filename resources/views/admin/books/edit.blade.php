@@ -11,6 +11,8 @@
       @method('put')
       @csrf
 
+
+
       <div class="mb-6">
         <label class="block mb-2 uppercase font-bold text-xs"
                for="Title"

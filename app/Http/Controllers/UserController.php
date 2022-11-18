@@ -31,10 +31,10 @@ class UserController extends Controller
 
 
 
-       return view('welcome', [
-         'books' => $this->getBooks(),
-         'categories' => Category::all()
-       ]);
+//       return view('welcome', [
+//         'books' => $this->getBooks(),
+//         'categories' => Category::all()
+//       ]);
 
 //        $books = Book::all();
 //
@@ -69,9 +69,11 @@ class UserController extends Controller
 //     return Book::latest()->filter()->paginate(5);
 //  }
 
+// this code move to model file
   public function getUsers() {
       return User::all();
   }
+
 
 
 
@@ -195,7 +197,6 @@ class UserController extends Controller
 //      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
 //        return abort(403);
 //      }
-
       $user->delete();
       return to_route('users.index')->with('success', 'User deleted');
     }
