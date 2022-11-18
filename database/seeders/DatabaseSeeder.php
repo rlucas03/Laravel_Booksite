@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
 
 //
 //        this creates a corresponding book, category and user
-        Book::factory(5)->create();
+        Book::factory(2)->create();
 //
 //
 //        $books = Book::factory()

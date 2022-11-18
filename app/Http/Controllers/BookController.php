@@ -25,10 +25,9 @@ class BookController extends Controller
 
       //Todo - make the controllers slimmer and models fatter
        return view('welcome', [
-         'books' => Book::showOnHomePage(2),
+         'books' => Book::showOnHomePage(4),
          'categories' => Category::all()
        ]);
-
     }
 
 

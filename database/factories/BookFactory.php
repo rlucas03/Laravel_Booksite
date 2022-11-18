@@ -26,16 +26,12 @@ class BookFactory extends Factory
             'user_id' => User::factory(),
 //           'category_id' => Category::factory(),
             'category_id' => rand(1,10),
-//            'category_id' => $this->faker->word,
             'slug' => $this->faker->word,
             'uuid' => $this->faker->word,
             'title' => $this->faker->sentence,
-            'thumbnail' => $this->faker->word,
+            'thumbnail' =>  $this->faker->image,
             'description' => $this->faker->sentence,
             'pdf' => $this->faker->word
-
         ];
     }
 }
-
-

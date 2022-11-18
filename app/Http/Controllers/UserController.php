@@ -50,24 +50,24 @@ class UserController extends Controller
     }
 
 
-  public function mybooks()
-  {
-    // fetch books from the db & pass content to view to display them
-
-//        using eloquent, get all the books of this logged in user and display them
-    $books = Book::where('user_id',Auth::id() )->get();
-
-    return view('books.index')->with('books', $books);
-
-
-//        return view('books.book')->with('books', $books);
-
-  }
+//  public function mybooks()
+//  {
+//    // fetch books from the db & pass content to view to display them
+//
+////        using eloquent, get all the books of this logged in user and display them
+//    $books = Book::where('user_id',Auth::id() )->get();
+//
+//    return view('books.index')->with('books', $books);
+//
+//
+////        return view('books.book')->with('books', $books);
+//
+//  }
 
 //  for the search query
-  public function getBooks() {
-     return Book::latest()->filter()->paginate(5);
-  }
+//  public function getBooks() {
+//     return Book::latest()->filter()->paginate(5);
+//  }
 
   public function getUsers() {
       return User::all();
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        //
     }
 
     /**
@@ -93,35 +93,7 @@ class UserController extends Controller
      */
     public function store()
     {
-//      $path = request()->file('thumbnail')->store('thumbnails');
-//      $path = request()->file('pdf')->store('pdfs');
-//      return 'done ' . $path;
-//
-//        dd(request()->all());
-//      return \request()->all();
-
-      $attributes = request()->validate([
-        'title' => 'required',
-        'thumbnail' => 'required|image',
-        'slug' => 'required',
-        'description' => 'required',
-        'pdf' => 'required|mimes:pdf',
-        'category_id' => ['required', Rule::exists('categories', 'id')]
-      ]);
-//        Yay
-//      dd('success validation succeeded');
-
-
-      $attributes['uuid'] = Str::uuid();
-      $attributes['user_id'] = auth()->id();
-      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
-      $attributes['pdf'] = \request()->file('pdf')->store('pdfs');
-
-      Book::create($attributes);
-
-//      return $this->create($attributes);
-
-      return redirect('/');
+        //
     }
 
 

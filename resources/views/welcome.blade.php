@@ -76,7 +76,7 @@
                         @foreach($books as $book)
 
                                 <div class="mt-4 my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-                                  <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl float-right">
+                                  <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl">
                                   <a href="{{ route('books.show', $book) }}">
                                   <h2 class="font-bold text-2xl">
                                         Book title:

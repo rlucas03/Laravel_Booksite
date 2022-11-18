@@ -18,7 +18,7 @@
 
       </div>
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-{{--        <img height="50" width="50" src="{{ asset('storage/'.$category->thumbnail) }}" class="rounded-xl">--}}
+        <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl float-right">
 
 
         <h2 class="font-bold text-2xl">
@@ -43,7 +43,7 @@
 
         <p class="mt-2">
           Pdf:
-          {{ $category->pdf }}
+          <a href=" {{asset('storage/'.$book->pdf)}}" target="_blank" download="{{ $book->pdf }}">download</a>
         </p>
 
 

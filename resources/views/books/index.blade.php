@@ -13,8 +13,10 @@
             <a href="{{ route('books.create') }}" class="text-blue-300">Upload new book</a>
           </p>
 
-{{--          links just for admin --}}
-          @auth
+{{--          links just for admin to edit users and books --}}
+          @if  (auth()->user()?->name == 'Ryan' )
+
+
           <p class="p-6 text-blue-800 underline">
             <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for users</a>
           </p>
@@ -23,7 +25,8 @@
             <a href="admin/books" class="text-blue-300">Admin section for books</a>
           </p>
 
-          @endauth
+
+          @endif
 
 
 
