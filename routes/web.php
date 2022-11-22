@@ -30,6 +30,8 @@ Route::get('/', [BookController::class, 'index']);
 // Todo - make sure all routes are named and there are no hard-coded urls in the views
 Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 
+Route::get('test', [\App\Http\Controllers\TestController::class, 'index'])->name('test');
+
 // admin route
 Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin')->name('admin-books');
 Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-create');

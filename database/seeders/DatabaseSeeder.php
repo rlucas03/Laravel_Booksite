@@ -28,70 +28,46 @@ class DatabaseSeeder extends Seeder
 
 
 //        calling additional seed classes
-//        $this->call([
-//            CategorySeeder::class,
-//            UserSeeder::class,
-//            BookSeeder::class,
-//        ]);
+        $this->call([
+            CategorySeeder::class,
+            UserSeeder::class,
+            BookSeeder::class,
+        ]);
 
 
-//        manually insert category
-//        DB::table('categories')->insert([
-//            'name' => Str::random(10),
-//            'slug' => Str::random(7)
-//        ]);
+
+
+
+
+
 
 //        insert 10 categories to db
 //        $fiction = Category::create([
 //           'name' => 'Fiction',
-//           'slug' => 'fiction'
-//        ]);
 //
-//        $fiction = Category::create([
-//           'name' => 'Classics',
-//           'slug' => 'classics'
-//        ]);
-//
-//        $fiction = Category::create([
-//           'name' => 'History',
-//           'slug' => 'history'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Modern',
-//           'slug' => 'modern'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Crime',
-//           'slug' => 'crime'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Fantasy',
-//           'slug' => 'fantasy'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Manga',
-//           'slug' => 'manga'
-//        ]);
-//
-//        $fiction = Category::create([
-//           'name' => 'Food',
-//           'slug' => 'food'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Humour',
-//           'slug' => 'humour'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Health',
-//           'slug' => 'health'
-//        ]);
+
+//      Category::truncate();
+//      User::truncate();
+//      Book::truncate();
+
+//      Category::factory(10)->create();
 
       // create a new user that has between 0-3 books associated with them
-      $user = User::factory(10)
-        ->has(Book::factory()->count(rand(0,3)))
-        ->create();
+//      $user = User::factory(20)
+//        ->has(Book::factory()->count(rand(0,5)))
+//        ->create();
+
+//       experiment with this
+//      Book::factory()->create([
+//        'user_id'   => $users->random()->id,
+//        'category_id'   => $categories->random()->id
+//      ]);
+//
 
 
+
+//create test controller and test route and expieriment with eloquient queries where users have no books
+//  eloquent relation wherehas opposite where hasnt use DD in test controller no need for view
 
 
 //
@@ -109,7 +85,7 @@ class DatabaseSeeder extends Seeder
 //            ->count(2)
 //            ->hasBooks(1)
 //            ->create();
-//
+
 //         \App\Models\User::factory()->create();
 
 //        $user = \App\Models\User::factory(10)->create();

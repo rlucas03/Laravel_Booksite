@@ -22,5 +22,11 @@ class UserSeeder extends Seeder
 //            ->has(Book::factory()->count(rand(0,3)))
 //            ->create();
 
+      for ($i = 0; $i < 20; $i++) {
+        $user = User::factory(1)
+          ->has(Book::factory()->count(rand(0, 5)))
+          ->create();
+      }
+
     }
 }

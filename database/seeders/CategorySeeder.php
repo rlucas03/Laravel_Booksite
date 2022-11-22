@@ -15,49 +15,20 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-//                insert 10 categories to db
+
+
+      Category::truncate();
+      Category::factory(10)->create();
+
+
+//       insert 10 categories to db
 //        $fiction = Category::create([
 //           'name' => 'Fiction',
 //           'slug' => 'fiction'
 //        ]);
 //
-//        $fiction = Category::create([
-//           'name' => 'Classics',
-//           'slug' => 'classics'
-//        ]);
-//
-//        $fiction = Category::create([
-//           'name' => 'History',
-//           'slug' => 'history'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Modern',
-//           'slug' => 'modern'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Crime',
-//           'slug' => 'crime'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Fantasy',
-//           'slug' => 'fantasy'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Manga',
-//           'slug' => 'manga'
-//        ]);
-//
-//        $fiction = Category::create([
-//           'name' => 'Food',
-//           'slug' => 'food'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Humour',
-//           'slug' => 'humour'
-//        ]);
-//        $fiction = Category::create([
-//           'name' => 'Health',
-//           'slug' => 'health'
-//        ]);
+
     }
 }
+
+

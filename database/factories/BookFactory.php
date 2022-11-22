@@ -23,15 +23,18 @@ class BookFactory extends Factory
     {
 //        use category factory to create 10 random categories upon seeding
         return [
-            'user_id' => User::factory(),
+//            'user_id' => User::factory(),
 //           'category_id' => Category::factory(),
             'category_id' => rand(1,10),
             'slug' => $this->faker->word,
             'uuid' => $this->faker->word,
             'title' => $this->faker->sentence,
-            'thumbnail' =>  $this->faker->image,
+            'thumbnail' =>  'thumbnails/'.'AuiJniCXrtbB6LJq740h8OfS7DFugJUOvvZzoIct.png',
             'description' => $this->faker->sentence,
-            'pdf' => $this->faker->word
+            'pdf' => 'pdfs/'.'ZmB5Qy6vHAAp4Z03o4i2GxgoSTWUAE1mRk6SmPqW.pdf'
+
+
+
         ];
     }
 }

@@ -69,7 +69,7 @@ class UserController extends Controller
 //     return Book::latest()->filter()->paginate(5);
 //  }
 
-// this code move to model file
+
   public function getUsers() {
       return User::all();
   }
@@ -107,7 +107,7 @@ class UserController extends Controller
      */
 
 //    replace the primary key with the uuid of each book
-//route model binding. changed $id to $uuid to Book $book
+//route model binding. changed $id to $uuid to Book $book to User $user
     public function show(User $user)
     {
 //      $book = Book::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
