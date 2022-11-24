@@ -17,16 +17,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-//         create a new user that has between 0-3 books associated with them
-//       $user = User::factory()
-//            ->has(Book::factory()->count(rand(0,3)))
-//            ->create();
 
-      for ($i = 0; $i < 20; $i++) {
-        $user = User::factory(1)
-          ->has(Book::factory()->count(rand(0, 5)))
-          ->create();
-      }
+      User::factory()
+        ->times(20)->create()
+        ->each(function ($user){
+          $user->books()->saveMany(
+            Book::factory()->times(random_int(0, 5))->make()
+          );
+        });
+
+//      for ($i = 0; $i < 20; $i++) {
+//
+//        $user = User::factory(1)
+//          ->has(Book::factory()->count(rand(0, 5)))
+//          ->create();
+//      }
 
     }
 }

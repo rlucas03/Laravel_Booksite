@@ -23,7 +23,6 @@ class BookController extends Controller
         // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
 
-      //Todo - make the controllers slimmer and models fatter
        return view('welcome', [
          'books' => Book::showOnHomePage(4),
          'categories' => Category::all()
@@ -68,6 +67,7 @@ class BookController extends Controller
 //
 //        dd(request()->all());
 
+      // Todo - the slug should be generated automatically and not inserted by the user
       $attributes = request()->validate([
         'title' => 'required',
         'thumbnail' => 'required|image',
@@ -116,6 +116,7 @@ class BookController extends Controller
 //    $id param changed to Book $book
     public function edit(Book $book)
     {
+      // Todo for roles and permissions, use spatie package?
       if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
           return abort(403);
         }
@@ -184,6 +185,7 @@ class BookController extends Controller
 //        return abort(403);
 //      }
 
+      // Todo - the following code violates the principle of no-repeat, perhaps look into Policies
       if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
         return abort(403);
       }

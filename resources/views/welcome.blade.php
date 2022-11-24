@@ -62,18 +62,14 @@
                 </div>
             @endif
 
-{{--            <h1 class="text-5xl">--}}
-{{--                Booksite--}}
-{{--            </h1>--}}
-
-
-
-
-
 
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         @foreach($books as $book)
+
+{{--                          <x-book-featured-card>--}}
+
+{{--                          </x-book-featured-card>--}}
 
                                 <div class="mt-4 my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                                   <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl">
@@ -88,8 +84,8 @@
                                       {{ Str::limit($book->description, 70) }}
 
                                     </p>
-{{-- i should use <a href="{{ route('books.show', $book) }}"> --}}{{-- categories/{{ $book->category->name }}--}}
-{{--                                  --}}
+ i should use <a href="{{ route('books.show', $book) }}">  categories/{{ $book->category->name }}
+
                                     <p class="mt-2">
                                      <a href="{{route('categories.show', $book->category)}}">Category
                                       {{ $book->category->name }} </a>
@@ -119,7 +115,6 @@
                     </div>
 
                 </div>
-
         </div>
 
     </body>

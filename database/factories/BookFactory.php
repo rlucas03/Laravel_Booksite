@@ -22,14 +22,18 @@ class BookFactory extends Factory
     public function definition()
     {
 //        use category factory to create 10 random categories upon seeding
+      // Todo - use correct title method and slug to generate m,ore accurate data
+      // Todo - get the thumbnail working
+
         return [
 //            'user_id' => User::factory(),
 //           'category_id' => Category::factory(),
             'category_id' => rand(1,10),
             'slug' => $this->faker->word,
             'uuid' => $this->faker->word,
-            'title' => $this->faker->sentence,
-            'thumbnail' =>  'thumbnails/'.'AuiJniCXrtbB6LJq740h8OfS7DFugJUOvvZzoIct.png',
+            'title' => $this->faker->word,
+//            'thumbnail' =>  'thumbnails/'.'AuiJniCXrtbB6LJq740h8OfS7DFugJUOvvZzoIct.png',
+            'thumbnail' =>  'thumbnails/'.$this->faker->image(null, 360, 360, 'animals', true),
             'description' => $this->faker->sentence,
             'pdf' => 'pdfs/'.'ZmB5Qy6vHAAp4Z03o4i2GxgoSTWUAE1mRk6SmPqW.pdf'
 

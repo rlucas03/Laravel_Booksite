@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 //        use fake data for everything except the pdf field
-
 //        Book::factory(5)->create([
 //            'pdf' => 'test.pdf'
 //        ]);
@@ -31,7 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             UserSeeder::class,
-            BookSeeder::class,
         ]);
 
 

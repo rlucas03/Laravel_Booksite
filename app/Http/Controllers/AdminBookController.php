@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminBookController extends Controller
 {
     public function index() {
+      // Todo the below code gives unfair advantage to anyone named Ryan by his parents!
+      // remove the following and ensure it works via middleware
+
 //      only admin ryan can see the admin control panel pages
 //      do we have an authenticated user, and it's not null?
       if (auth()->user()?->name !== 'Ryan' ) {

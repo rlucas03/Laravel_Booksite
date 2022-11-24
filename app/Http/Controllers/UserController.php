@@ -29,52 +29,12 @@ class UserController extends Controller
         'users' => $this->getUsers()
       ]);
 
-
-
-//       return view('welcome', [
-//         'books' => $this->getBooks(),
-//         'categories' => Category::all()
-//       ]);
-
-//        $books = Book::all();
-//
-////        return view('welcome')->with('books', $books);
-//
-//             return view('welcome', [
-//            'books' => Book::latest()->paginate(5)
-//        ]);
-
-//        return view('books.book')->with('books', $books);
-
-
     }
-
-
-//  public function mybooks()
-//  {
-//    // fetch books from the db & pass content to view to display them
-//
-////        using eloquent, get all the books of this logged in user and display them
-//    $books = Book::where('user_id',Auth::id() )->get();
-//
-//    return view('books.index')->with('books', $books);
-//
-//
-////        return view('books.book')->with('books', $books);
-//
-//  }
-
-//  for the search query
-//  public function getBooks() {
-//     return Book::latest()->filter()->paginate(5);
-//  }
 
 
   public function getUsers() {
       return User::all();
   }
-
-
 
 
     /**
@@ -97,7 +57,6 @@ class UserController extends Controller
     {
         //
     }
-
 
     /**
      * Display the specified resource.

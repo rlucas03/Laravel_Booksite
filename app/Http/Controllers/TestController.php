@@ -5,13 +5,15 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
   public function index()
   {
 
-      dd(\request()->all());
+    $users = User::whereDoesntHave('books')->get();
+    dd($users);
 
 //    select users that  have 0 books and show them
 
