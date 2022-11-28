@@ -21,7 +21,6 @@ class TestController extends Controller
     // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
 
-    //Todo - make the controllers slimmer and models fatter
     return view('test', [
       'books' => Book::showOnHomePage(4),
       'categories' => Category::all()

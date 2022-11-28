@@ -16,11 +16,19 @@
           {{--          links just for admin to manage users --}}
           @if  (auth()->user()?->name == 'Ryan' )
             <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for users</a>
+              <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for Users</a>
             </p>
 
             <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('admin-books') }}" class="text-blue-300">Admin section for books</a>
+              <a href="{{ route('admin-books') }}" class="text-blue-300">Admin section for Books</a>
+            </p>
+
+            <p class="p-6 text-blue-800 underline">
+              <a href="{{ route('categories.create') }}" class="text-blue-300">Admin section for Creating Categories</a>
+            </p>
+
+            <p class="p-6 text-blue-800 underline">
+              <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>
             </p>
 
           @endif

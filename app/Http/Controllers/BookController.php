@@ -59,7 +59,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
 //      $path = request()->file('thumbnail')->store('thumbnails');
 //      $path = request()->file('pdf')->store('pdfs');
@@ -71,14 +71,14 @@ class BookController extends Controller
       $attributes = request()->validate([
         'title' => 'required',
         'thumbnail' => 'required|image',
-        'slug' => 'required',
+//        'slug' => 'required',
         'description' => 'required',
         'pdf' => 'required|mimes:pdf',
         'category_id' => ['required', Rule::exists('categories', 'id')]
       ]);
 //      dd('success validation succeeded');
 
-
+      $attributes['slug'] = Str::slug($request->title);
       $attributes['uuid'] = Str::uuid();
       $attributes['user_id'] = auth()->id();
       $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');

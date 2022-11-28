@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'index'])->name('home');
 
 
 // Todo - naming conventions are important. All methods should be camel-cased and all URIs should be dashed
@@ -37,7 +37,6 @@ Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('ad
 
 //Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-create');
 //Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin')->name('admin-edit');
-
 
 Route::resource('users', UserController::class)->middleware('admin');
 

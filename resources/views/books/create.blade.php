@@ -20,13 +20,13 @@
             </div>
 
 
-            <div class="mt-4">
-              <x-input-label for="slug" :value="__('Slug')" />
+{{--            <div class="mt-4">--}}
+{{--              <x-input-label for="slug" :value="__('Slug')" />--}}
 
-              <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autofocus />
+{{--              <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autofocus />--}}
 
-              <x-input-error :messages="$errors->get('slug')" class="mt-2" />
-            </div>
+{{--              <x-input-error :messages="$errors->get('slug')" class="mt-2" />--}}
+{{--            </div>--}}
 
 
             <div class="mt-4">

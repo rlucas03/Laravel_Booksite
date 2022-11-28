@@ -84,7 +84,7 @@
                                       {{ Str::limit($book->description, 70) }}
 
                                     </p>
- i should use <a href="{{ route('books.show', $book) }}">  categories/{{ $book->category->name }}
+  <a href="{{ route('books.show', $book) }}">
 
                                     <p class="mt-2">
                                      <a href="{{route('categories.show', $book->category)}}">Category

@@ -11,6 +11,11 @@
 
   {{--          links just for admin to manage users --}}
   @if  (auth()->user()?->name == 'Ryan' )
+
+    <p class="p-6 text-blue-800 underline">
+      <a href="{{ route('books.create') }}" class="text-blue-300">Upload new book</a>
+    </p>
+
     <p class="p-6 text-blue-800 underline">
       <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for users</a>
     </p>
@@ -18,6 +23,14 @@
     <p class="p-6 text-blue-800 underline">
 {{--      <a href="admin/books" class="text-blue-300">Admin section for books</a>--}}
       <a href="{{ route('admin-books') }}" class="text-blue-300">Admin section for books</a>
+    </p>
+
+    <p class="p-6 text-blue-800 underline">
+      <a href="{{ route('categories.create') }}" class="text-blue-300">Admin section for Creating Categories</a>
+    </p>
+
+    <p class="p-6 text-blue-800 underline">
+      <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>
     </p>
 
   @endif

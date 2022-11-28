@@ -30,9 +30,16 @@ class Book extends Model
       }
     }
 
+//return 'uuid'; changed to 'slug' to get book slug
+
     public function getRouteKeyName() {
-      return 'uuid';
+      return 'slug';
 }
+
+// return book slug
+//public function getRouteKeyName() {
+//      return 'slug';
+//}
 
 // a book belongs to a category
     public function category() {

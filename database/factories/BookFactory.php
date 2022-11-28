@@ -1,11 +1,11 @@
 <?php
 
 namespace Database\Factories;
-
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
@@ -25,20 +25,30 @@ class BookFactory extends Factory
       // Todo - use correct title method and slug to generate m,ore accurate data
       // Todo - get the thumbnail working
 
+      $title = $this->bookTitle(4);
+      $slug = Str::slug($title);
         return [
 //            'user_id' => User::factory(),
 //           'category_id' => Category::factory(),
             'category_id' => rand(1,10),
-            'slug' => $this->faker->word,
-            'uuid' => $this->faker->word,
-            'title' => $this->faker->word,
+            'title' => $title,
+            'slug' => $slug,
+//            'slug' => $this->faker->word,
+//            'title' => $this->faker->word,
+            'uuid' => $this->faker->randomNumber(),
+
 //            'thumbnail' =>  'thumbnails/'.'AuiJniCXrtbB6LJq740h8OfS7DFugJUOvvZzoIct.png',
             'thumbnail' =>  'thumbnails/'.$this->faker->image(null, 360, 360, 'animals', true),
             'description' => $this->faker->sentence,
             'pdf' => 'pdfs/'.'ZmB5Qy6vHAAp4Z03o4i2GxgoSTWUAE1mRk6SmPqW.pdf'
 
-
-
         ];
+    }
+
+//    custom function to return a book title
+    public function bookTitle($nbWords): string
+    {
+      $sentence = $this->faker->sentence($nbWords);
+      return substr($sentence, 0, strlen($sentence) - 1);
     }
 }

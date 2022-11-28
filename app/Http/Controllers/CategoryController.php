@@ -21,9 +21,15 @@ class CategoryController extends Controller
     // Todo - admin should be able to view, add, edit and delete categories
     public function index()
     {
-//
+          return view('categories.index', [
+        'categories' => $this->getCategories()
+      ]);
 
     }
+
+  public function getCategories() {
+    return Category::all();
+  }
 
 
   public function categories(Category $category) {
@@ -43,6 +49,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+      return view('categories.create');
     }
 
     /**
@@ -51,9 +58,21 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-//
+    $attributes = request()->validate([
+        'name' => 'required'
+    ]);
+
+      $attributes['slug'] = Str::slug($request->name);
+
+//      dd('success validation succeeded');
+
+
+
+      Category::create($attributes);
+
+      return redirect('/');
     }
 
 
@@ -77,12 +96,12 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
-    public function edit(Book $book)
+    public function edit(Category $category)
     {
-   //
+          return view('categories.edit')->with('category', $category);
 
     }
 
@@ -95,10 +114,26 @@ class CategoryController extends Controller
      */
 
 //    $id param changed to Book $book
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Category $category)
     {
 
-//
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//        return abort(403);
+//      }
+
+//      $title = $this->faker->unique()->word;
+//      $slug = Str::slug($title);
+
+      $attributes = request()->validate([
+        'name' => 'required'
+
+      ]);
+
+      $attributes['slug'] = Str::slug($request->name);
+
+      $category->update($attributes);
+      return to_route('categories.index', $category)->with('success', 'Category updated');
+
     }
 
     /**
@@ -109,8 +144,8 @@ class CategoryController extends Controller
      */
 
 //    $id param changed to Book $book because we are injecting the entire model
-    public function destroy(Book $book)
+    public function destroy(Category $category)
     {
-
+      $category->delete();
     }
 }

@@ -30,13 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             UserSeeder::class,
+            RoleAndPermissionSeeder::class
         ]);
-
-
-
-
-
-
 
 
 //        insert 10 categories to db
