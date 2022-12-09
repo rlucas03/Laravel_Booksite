@@ -113,9 +113,9 @@ class UserController extends Controller
 //        dd($request);
 //    if its the authorized user, all of this is done
 
-      if (auth()->user()?->name !== 'Ryan' ) {
-        return abort(403);
-      }
+//      if (auth()->user()?->name !== 'Ryan' ) {
+//        return abort(403);
+//      }
 
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
@@ -153,9 +153,6 @@ class UserController extends Controller
 //        return abort(403);
 //      }
 
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//        return abort(403);
-//      }
       $user->delete();
       return to_route('users.index')->with('success', 'User deleted');
     }

@@ -21,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//  if (auth()->user()) {
+//        auth()->user()->assignRole('admin');
+//  }
+//  return view('home');
+//});
+
+
 
 
 Route::get('/', [BookController::class, 'index'])->name('home');
@@ -33,18 +41,24 @@ Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 Route::get('test', [TestController::class, 'index'])->name('test');
 
 // admin route
-Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('admin')->name('admin-books');
 
 //Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-create');
 //Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin')->name('admin-edit');
 
-Route::resource('users', UserController::class)->middleware('admin');
+// route group for admin only sections
+Route::group(['middleware' => ['can:manage-users']], function () {
+  Route::resource('users', UserController::class);
+  Route::resource('categories', CategoryController::class);
+  Route::get('admin/books', [AdminBookController::class, 'index'])->name('admin-books'); // admin middleware b4
 
-// Todo use the slug to access a book resource instead of ID
+});
+
 Route::resource('books', BookController::class)->middleware('auth');
 
-// Todo - non-admins should not have access to create/update/delete
-Route::resource('categories', CategoryController::class)->middleware('auth');
+//Route::resource('users', UserController::class)->middleware('can:manage-users'); //admin before in middleware
+
+
+//Route::resource('categories', CategoryController::class)->middleware('can:manage-categories'); // middleware = auth before change to roles and permissions
 
 
 

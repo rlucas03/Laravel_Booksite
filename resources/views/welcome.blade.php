@@ -28,7 +28,7 @@
 
     </head>
     <body class="antialiased">
-      <h1 class="text-5xl m-auto">
+      <h1 class="text-5xl mx-auto text-center text-lexend">
         Booksite
       </h1>
 

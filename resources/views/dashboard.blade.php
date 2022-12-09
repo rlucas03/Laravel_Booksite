@@ -9,8 +9,16 @@
   </p>
 
 
+  @role('Super-Admin')
+    <p>Admin is logged in</p>
+  @else <p>Admin is not logged in</p>
+  @endrole
+
+
   {{--          links just for admin to manage users --}}
-  @if  (auth()->user()?->name == 'Ryan' )
+{{--  @can('manage-users')--}}
+    @role('Super-Admin')
+{{--  @if  (auth()->user()?->name == 'Ryan' )--}}
 
     <p class="p-6 text-blue-800 underline">
       <a href="{{ route('books.create') }}" class="text-blue-300">Upload new book</a>
@@ -33,7 +41,10 @@
       <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>
     </p>
 
-  @endif
+    @endrole
+
+{{--  @endif--}}
+{{--  @endcan--}}
 
 
   <div class="py-12">

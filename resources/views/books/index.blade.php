@@ -14,8 +14,10 @@
           </p>
 
           {{--          links just for admin to manage users --}}
-          @if  (auth()->user()?->name == 'Ryan' )
-            <p class="p-6 text-blue-800 underline">
+{{--          @if  (auth()->user()?->name == 'Ryan' )--}}
+          @can('manage-users')
+
+          <p class="p-6 text-blue-800 underline">
               <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for Users</a>
             </p>
 
@@ -30,8 +32,9 @@
             <p class="p-6 text-blue-800 underline">
               <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>
             </p>
+          @endcan
 
-          @endif
+{{--          @endif--}}
 
 
 

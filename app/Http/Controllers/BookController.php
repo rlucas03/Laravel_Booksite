@@ -30,6 +30,8 @@ class BookController extends Controller
     }
 
 
+
+
   public function myBooks()
   {
 
@@ -67,7 +69,6 @@ class BookController extends Controller
 //
 //        dd(request()->all());
 
-      // Todo - the slug should be generated automatically and not inserted by the user
       $attributes = request()->validate([
         'title' => 'required',
         'thumbnail' => 'required|image',
@@ -111,15 +112,14 @@ class BookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
     public function edit(Book $book)
     {
-      // Todo for roles and permissions, use spatie package?
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-          return abort(403);
-        }
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//          return abort(403);
+//        }
 
 //      if (auth()->user()?->name !== 'Ryan' ) {
 //        abort(403);
@@ -143,9 +143,9 @@ class BookController extends Controller
 //        dd($request);
 //    if its the authorized user, all of this is done
 
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-        return abort(403);
-      }
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//        return abort(403);
+//      }
 
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
@@ -154,13 +154,13 @@ class BookController extends Controller
       $attributes = request()->validate([
         'title' => 'required',
         'thumbnail' => 'required|image',
-        'slug' => 'required',
+//        'slug' => 'required',
         'description' => 'required',
         'pdf' => 'required|mimes:pdf',
         'category_id' => ['required', Rule::exists('categories', 'id')]
       ]);
 
-
+      $attributes['slug'] = Str::slug($request->title);
       $attributes['uuid'] = Str::uuid();
       $attributes['user_id'] = auth()->id();
       $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
@@ -185,10 +185,9 @@ class BookController extends Controller
 //        return abort(403);
 //      }
 
-      // Todo - the following code violates the principle of no-repeat, perhaps look into Policies
-      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-        return abort(403);
-      }
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
+//        return abort(403);
+//      }
 
       $book->delete();
       return to_route('books.index')->with('success', 'Book deleted');

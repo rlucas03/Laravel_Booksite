@@ -13,25 +13,14 @@
       @method('put')
       @csrf
 
+
       <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs"
-               for="Name"
-        >
-          Name
 
-        </label>
+        <x-input-label for="name" :value="__('Name')" />
 
-        <input class="border border-gray-400 p-2 w-full"
-               type="text"
-               name="name"
-               id="name"
-               value="{{ ($category->name) }}"
-               required
-        >
+        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{($category->name)}}" required autofocus />
 
-        @error('name')
-        <p class="text-red-500">{{ $message }}</p>
-        @enderror
+        <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
       </div>
 

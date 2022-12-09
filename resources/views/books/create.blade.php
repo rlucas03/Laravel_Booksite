@@ -20,15 +20,6 @@
             </div>
 
 
-{{--            <div class="mt-4">--}}
-{{--              <x-input-label for="slug" :value="__('Slug')" />--}}
-
-{{--              <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autofocus />--}}
-
-{{--              <x-input-error :messages="$errors->get('slug')" class="mt-2" />--}}
-{{--            </div>--}}
-
-
             <div class="mt-4">
               <x-input-label for="thumbnail" :value="__('Thumbnail')" />
 
@@ -58,13 +49,15 @@
             </div>
 
               <div class="mt-4">
-                  <label class="block mb-2 uppercase font-bold text-xs"
-                         for="Category"
-                  >
-                      Category
-                  </label>
+{{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--                         for="Category"--}}
+{{--                  >--}}
+{{--                      Category--}}
+{{--                  </label>--}}
+                <x-input-label for="Category" :value="__('Category')" />
 
-                  <select name ="category_id" id="category_id">
+
+                <select name ="category_id" id="category_id">
                       @php
                           $categories = \App\Models\Category::all();
                       @endphp
@@ -74,9 +67,12 @@
               @endforeach
                   </select>
 
-                @error('category_id')
-                  <p class="text-red-500">{{ $message }}</p>
-                @enderror
+
+                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+
+{{--                @error('category_id')--}}
+{{--                  <p class="text-red-500">{{ $message }}</p>--}}
+{{--                @enderror--}}
 
                 <div class="mt-4">
 

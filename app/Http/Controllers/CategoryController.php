@@ -18,7 +18,6 @@ class CategoryController extends Controller
      */
 
 
-    // Todo - admin should be able to view, add, edit and delete categories
     public function index()
     {
           return view('categories.index', [

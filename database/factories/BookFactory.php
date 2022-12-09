@@ -22,8 +22,7 @@ class BookFactory extends Factory
     public function definition()
     {
 //        use category factory to create 10 random categories upon seeding
-      // Todo - use correct title method and slug to generate m,ore accurate data
-      // Todo - get the thumbnail working
+
 
       $title = $this->bookTitle(4);
       $slug = Str::slug($title);

@@ -11,46 +11,34 @@
       @csrf
 
       <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs"
-               for="Name"
-        >
-          Name
 
-        </label>
+        <x-input-label for="name" :value="__('Name')" />
 
-        <input class="border border-gray-400 p-2 w-full"
-               type="text"
-               name="name"
-               id="name"
-               value="{{ old('name') }}"
-               required
-        >
+        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
 
-        @error('name')
-        <p class="text-red-500">{{ $message }}</p>
-        @enderror
+        <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-      </div>
 
-{{--      <div class="mb-6">--}}
 {{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
-{{--               for="Slug"--}}
+{{--               for="Name"--}}
 {{--        >--}}
-{{--          Slug--}}
+{{--          Name--}}
 
 {{--        </label>--}}
 
 {{--        <input class="border border-gray-400 p-2 w-full"--}}
 {{--               type="text"--}}
-{{--               name="slug"--}}
-{{--               id="slug"--}}
-{{--               value="{{ old('slug') }}"--}}
-
+{{--               name="name"--}}
+{{--               id="name"--}}
+{{--               value="{{ old('name') }}"--}}
+{{--               required--}}
 {{--        >--}}
 
-{{--        @error('slug')--}}
+{{--        @error('name')--}}
 {{--        <p class="text-red-500">{{ $message }}</p>--}}
 {{--        @enderror--}}
+
+      </div>
 
 
           <button type="submit" class="">

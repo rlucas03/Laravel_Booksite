@@ -18,24 +18,54 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
+
+      // Reset cached roles and permissions
+      app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+
+      // create permissions
+      Permission::create(['name' => 'manage-users']);
       Permission::create(['name' => 'create-users']);
       Permission::create(['name' => 'edit-users']);
       Permission::create(['name' => 'delete-users']);
 
+      Permission::create(['name' => 'manage-books']);
       Permission::create(['name' => 'create-books']);
       Permission::create(['name' => 'edit-books']);
       Permission::create(['name' => 'delete-books']);
 
-      $adminRole = Role::create(['name' => 'Admin']);
-//      $editorRole = Role::create(['name' => 'Editor']);
+      Permission::create(['name' => 'manage-categories']);
+      Permission::create(['name' => 'create-categories']);
+      Permission::create(['name' => 'edit-categories']);
+      Permission::create(['name' => 'delete-categories']);
 
-      $adminRole->givePermissionTo([
+
+      $role = Role::create(['name' => 'Super-Admin']);
+      // gets all permissions via Gate::before rule; see AuthServiceProvider
+//      $role->givePermissionTo(Permission::all());
+
+      $user = \App\Models\User::factory()->create([
+        'name' => 'admin',
+        'email' => 'admin@example.com',
+        'password' => bcrypt('password'),
+      ]);
+      $user->assignRole($role);
+
+//
+
+      $role->givePermissionTo([
+        'manage-users',
         'create-users',
         'edit-users',
         'delete-users',
+        'manage-books',
         'create-books',
         'edit-books',
         'delete-books',
+        'manage-categories',
+        'create-categories',
+        'edit-categories',
+        'delete-categories'
       ]);
 
 //      $editorRole->givePermissionTo([
@@ -44,9 +74,6 @@ class RoleAndPermissionSeeder extends Seeder
 //        'delete-books',
 //      ]);
 
-      $user = User::first();
-
-      $user->assignRole('Admin');
 
     }
 }
