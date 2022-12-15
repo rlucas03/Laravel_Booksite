@@ -1,9 +1,24 @@
 <x-app-layout>
 {{--  MY BOOKS PAGE --}}
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex mx-2">
             {{ __('My Books') }}
         </h2>
+
+
+      <h2 class="font-semibold text-xl  inline-flex">
+        <a href="{{ route('welcome') }}" class="text-green-900 ">Home</a>
+      </h2>
+
+      <h2 class="font-semibold text-xl text-green-900 leading-tight inline-flex mx-2">
+        <a href="{{ route('books.create') }}" class="text-green-900 text-center">Upload</a>
+      </h2>
+
+      @hasanyrole('Super-Admin|Admin')
+
+      <x-admin-links></x-admin-links>
+      @endrole
+
     </x-slot>
 
     <div class="py-12">
@@ -13,26 +28,25 @@
             <a href="{{ route('books.create') }}" class="text-blue-300">Upload new book</a>
           </p>
 
-          {{--          links just for admin to manage users --}}
-{{--          @if  (auth()->user()?->name == 'Ryan' )--}}
-          @can('manage-users')
 
-          <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for Users</a>
-            </p>
+{{--          @can('manage-users')--}}
 
-            <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('admin-books') }}" class="text-blue-300">Admin section for Books</a>
-            </p>
+{{--          <p class="p-6 text-blue-800 underline">--}}
+{{--              <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for Users</a>--}}
+{{--            </p>--}}
 
-            <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('categories.create') }}" class="text-blue-300">Admin section for Creating Categories</a>
-            </p>
+{{--            <p class="p-6 text-blue-800 underline">--}}
+{{--              <a href="{{ route('books.index') }}" class="text-blue-300">Admin section for Books</a>--}}
+{{--            </p>--}}
 
-            <p class="p-6 text-blue-800 underline">
-              <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>
-            </p>
-          @endcan
+{{--            <p class="p-6 text-blue-800 underline">--}}
+{{--              <a href="{{ route('categories.create') }}" class="text-blue-300">Admin section for Creating Categories</a>--}}
+{{--            </p>--}}
+
+{{--            <p class="p-6 text-blue-800 underline">--}}
+{{--              <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>--}}
+{{--            </p>--}}
+{{--          @endcan--}}
 
 {{--          @endif--}}
 

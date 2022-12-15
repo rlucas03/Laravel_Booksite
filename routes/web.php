@@ -30,30 +30,33 @@ use Illuminate\Support\Facades\Route;
 
 
 
+// old home route
+//Route::get('/', [BookController::class, 'index'])->name('home');
 
-Route::get('/', [BookController::class, 'index'])->name('home');
-
-
-// Todo - naming conventions are important. All methods should be camel-cased and all URIs should be dashed
-// Todo - make sure all routes are named and there are no hard-coded urls in the views
 Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 
-Route::get('test', [TestController::class, 'index'])->name('test');
+//Route::get('test', [TestController::class, 'index'])->name('test');
 
 // admin route
-
-//Route::get('admin/books/create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-create');
-//Route::get('admin/books/{book}/edit', [AdminBookController::class, 'edit'])->middleware('admin')->name('admin-edit');
 
 // route group for admin only sections
 Route::group(['middleware' => ['can:manage-users']], function () {
   Route::resource('users', UserController::class);
   Route::resource('categories', CategoryController::class);
-  Route::get('admin/books', [AdminBookController::class, 'index'])->name('admin-books'); // admin middleware b4
 
 });
+//Route::group(['middleware' => ['auth']], function () {
 
-Route::resource('books', BookController::class)->middleware('auth');
+  Route::resource('books', BookController::class); // was can:edit-books
+//  Route::get('/', [BookController::class, 'index'])->name('home')->can('manage-books', 'book');
+//  Route::get('/', [BookController::class, 'index'])->name('home');
+
+
+  Route::get('/', [BookController::class, 'welcome'])->name('welcome');
+
+//});
+
+
 
 //Route::resource('users', UserController::class)->middleware('can:manage-users'); //admin before in middleware
 

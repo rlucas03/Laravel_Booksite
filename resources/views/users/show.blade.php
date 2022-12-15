@@ -13,23 +13,23 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="text-sm font-medium text-gray-900">
-                      <a href="{{ route('users.show', $data['user']) }}">
+                      <a class="" href="{{ route('users.show', $data['user']) }}">
                         {{ $data['user']->name }}
 
                       </a>
 
-                      <a href="{{ route('users.edit', $data['user']) }}">
-                        {{ 'edit' }}
+                      <a class="mx-3" href="{{ route('users.edit', $data['user']) }}">
+                        {{ 'Edit' }}
 
                       </a>
 
                       <form method="POST" action="{{ route('users.destroy', $data['user']) }}">
                         @csrf
                         @method('DELETE')
-{{--                        <a href="{{ route('users.destroy', $data['user']) }}">--}}
-{{--                          {{ 'delete' }}--}}
+                        <a class="mx-3" href="{{ route('users.destroy', $data['user']) }}">
 
-{{--                        </a>--}}
+
+                        </a>
                         <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                       </form>
                     </div>

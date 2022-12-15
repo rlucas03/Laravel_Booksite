@@ -39,13 +39,20 @@ class RoleAndPermissionSeeder extends Seeder
       Permission::create(['name' => 'edit-categories']);
       Permission::create(['name' => 'delete-categories']);
 
-
-      $role = Role::create(['name' => 'Super-Admin']);
       // gets all permissions via Gate::before rule; see AuthServiceProvider
-//      $role->givePermissionTo(Permission::all());
+      $super_admin_role = Role::create(['name' => 'Super-Admin']);
+      $role = Role::create(['name' => 'Admin']);
+      $role->givePermissionTo(Permission::all());
 
       $user = \App\Models\User::factory()->create([
-        'name' => 'admin',
+        'name' => 'Super Admin',
+        'email' => 'superadmin@example.com',
+        'password' => bcrypt('password'),
+      ]);
+      $user->assignRole($super_admin_role);
+
+      $user = \App\Models\User::factory()->create([
+        'name' => 'Admin',
         'email' => 'admin@example.com',
         'password' => bcrypt('password'),
       ]);
@@ -53,20 +60,20 @@ class RoleAndPermissionSeeder extends Seeder
 
 //
 
-      $role->givePermissionTo([
-        'manage-users',
-        'create-users',
-        'edit-users',
-        'delete-users',
-        'manage-books',
-        'create-books',
-        'edit-books',
-        'delete-books',
-        'manage-categories',
-        'create-categories',
-        'edit-categories',
-        'delete-categories'
-      ]);
+//      $role->givePermissionTo([
+//        'manage-users',
+//        'create-users',
+//        'edit-users',
+//        'delete-users',
+//        'manage-books',
+//        'create-books',
+//        'edit-books',
+//        'delete-books',
+//        'manage-categories',
+//        'create-categories',
+//        'edit-categories',
+//        'delete-categories'
+//      ]);
 
 //      $editorRole->givePermissionTo([
 //        'create-books',

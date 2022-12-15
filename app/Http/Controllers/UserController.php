@@ -26,14 +26,17 @@ class UserController extends Controller
 //      using eloquent, get all the books of this logged in user and display them
 //    dd('test');
       return view('users.index', [
-        'users' => $this->getUsers()
+//        'users' => User::paginate(50)
+        'users' => $this->getUsers(),
       ]);
 
     }
 
 
+
   public function getUsers() {
-      return User::all();
+//      return User::all();
+      return User::paginate(20);
   }
 
 
@@ -74,8 +77,9 @@ class UserController extends Controller
 //          return abort(403);
 //        }
 
-      $data['user'] = $user;
+        $data['user'] = $user;
         return view('users.show', compact('data'));
+//        return view('users.index', compact('data'));
     }
 
     /**
@@ -87,15 +91,10 @@ class UserController extends Controller
 //    $id param changed to Book $book
     public function edit(User $user)
     {
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//          return abort(403);
-//        }
-
-//      if (auth()->user()?->name !== 'Ryan' ) {
-//        abort(403);
-//      }
+      $data['user'] = $user;
 
       return view('users.edit')->with('user', $user);
+      return view('users.edit', compact('data'));
 
     }
 
@@ -113,10 +112,6 @@ class UserController extends Controller
 //        dd($request);
 //    if its the authorized user, all of this is done
 
-//      if (auth()->user()?->name !== 'Ryan' ) {
-//        return abort(403);
-//      }
-
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
 //      }
@@ -124,7 +119,6 @@ class UserController extends Controller
       $attributes = request()->validate([
         'name' => 'required',
         'password' => 'required',
-
         'email' => 'required',
       ]);
 
@@ -135,7 +129,7 @@ class UserController extends Controller
 //      $attributes['pdf'] = \request()->file('pdf')->store('pdfs');
 
       $user->update($attributes);
-      return to_route('users.show', $user)->with('success', 'User updated');
+      return to_route('users.index', $user)->with('success', 'User updated');
 
     }
 

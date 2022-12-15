@@ -22,6 +22,25 @@
 
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
+{{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
+{{--               for="Name"--}}
+{{--        >--}}
+{{--          Name--}}
+
+{{--        </label>--}}
+
+{{--        <input class="border border-gray-400 p-2 w-full"--}}
+{{--               type="text"--}}
+{{--               name="name"--}}
+{{--               id="name"--}}
+{{--               value="{{ ($category->name) }}"--}}
+{{--               required--}}
+{{--        >--}}
+
+{{--        @error('name')--}}
+{{--        <p class="text-red-500">{{ $message }}</p>--}}
+{{--        @enderror--}}
+
       </div>
 
 

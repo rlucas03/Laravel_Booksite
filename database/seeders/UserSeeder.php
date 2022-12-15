@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
 
       User::factory()
-        ->times(20)->create()
+        ->times(100)->create()
         ->each(function ($user){
           $user->books()->saveMany(
             Book::factory()->times(random_int(0, 5))->make()

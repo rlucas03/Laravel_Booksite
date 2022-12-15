@@ -11,6 +11,17 @@ use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+
+    public function __construct()
+    {
+      $this->authorizeResource(Book::class, 'book');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,12 +34,32 @@ class BookController extends Controller
         // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
 
-       return view('welcome', [
-         'books' => Book::showOnHomePage(4),
-         'categories' => Category::all()
-       ]);
+//      dd('index');
+
+      if (auth()->check() && auth()->user()->hasRole(['Super-Admin', 'Admin'])) {
+
+//        return view('welcome', [
+//          'books' => Book::paginate(50)
+//        ]);
+
+
+        return view('admin.books.index', [
+          'books' => Book::paginate(50)
+        ]);
+      }
+
+        return view('welcome', [
+          'books' => Book::showOnHomePage(4),
+          'categories' => Category::all()
+        ]);
     }
 
+    public function welcome() {
+      return view('welcome', [
+        'books' => Book::showOnHomePage(4),
+        'categories' => Category::all()
+      ]);
+    }
 
 
 
@@ -115,15 +146,15 @@ class BookController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
-    public function edit(Book $book)
+    public function edit(Request $request, Book $book)
     {
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//          return abort(403);
+
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Super Admin'
+//          && auth()->user()?->name !== 'Admin' ) {
+//            return abort(403);
 //        }
 
-//      if (auth()->user()?->name !== 'Ryan' ) {
-//        abort(403);
-//      }
+
 
       return view('books.edit')->with('book', $book);
 
@@ -140,15 +171,17 @@ class BookController extends Controller
 //    $id param changed to Book $book
     public function update(Request $request, Book $book)
     {
-//        dd($request);
+
+
 //    if its the authorized user, all of this is done
 
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//        return abort(403);
-//      }
 
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
+//      }
+
+//      if ($request->user()->cannot('update', $book)) {
+//        abort(403);
 //      }
 
       $attributes = request()->validate([
@@ -178,18 +211,24 @@ class BookController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-//    $id param changed to Book $book because we are injecting the entire model
-    public function destroy(Book $book)
-    {
-//      if ($book->user_id != Auth::id()) {
-//        return abort(403);
-//      }
 
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//        return abort(403);
-//      }
+
+    public function destroy(Request $request, Book $book)
+    {
 
       $book->delete();
       return to_route('books.index')->with('success', 'Book deleted');
+
+
+      //      if ($book->user_id != Auth::id()) {
+//        return abort(403);
+//      }
+
+
+//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Super Admin'
+//        && auth()->user()?->name !== 'Admin' ) {
+//        return abort(403);
+//      }
+
     }
 }
