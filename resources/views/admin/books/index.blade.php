@@ -1,6 +1,6 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-  <h1>Admin controls</h1>
+  <h1 class="mx-6 my-6">Admin edit all books</h1>
 
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

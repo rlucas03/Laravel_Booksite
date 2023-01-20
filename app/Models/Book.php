@@ -20,21 +20,28 @@ class Book extends Model
 //    }
 
 // for searching books
-    public function scopeFilter($query) {
-      if (request('search')) {
-        $query
-          ->where('title', 'like', '%' . request('search') . '%')
-          ->orWhere('description', 'like', '%' . request('search') . '%')
-          ->orWhere('category_id', 'like', '%' . request('search') . '%');
+    public function scopeFilter($query)
+    {
+        if (request('search')) {
+            $query
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%')
+                ->orWhere(function ($qry) {
+                    $qry->whereHas('category', function ($qry) {
+                        $qry->where('name', 'like', '%' . request('search') . '%');
+                    });
+                });
+//          ->orWhere('category_id', 'like', '%' . request('search') . '%');
 //          ->orWhere('user_id', 'like', '%' . request('search') . '%');
-      }
+        }
     }
 
 //return 'uuid'; changed to 'slug' to get book slug
 
-    public function getRouteKeyName() {
-      return 'slug';
-}
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 // return book slug
 //public function getRouteKeyName() {
@@ -42,19 +49,23 @@ class Book extends Model
 //}
 
 // a book belongs to a category
-    public function category() {
+    public function category()
+    {
 
-        return $this->belongsTo(Category::class,  'category_id');
+
+        return $this->belongsTo(Category::class);
     }
 
 //    with this method, we can access the user of the book
 //  like any other property of the book model.. a book belongs to user
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
-    public static function showOnHomePage($no_of_books = 5) {
-      return Book::latest()->filter()->paginate($no_of_books);
+    public static function showOnHomePage($no_of_books = 5)
+    {
+        return Book::latest()->filter()->paginate($no_of_books);
     }
 }
 

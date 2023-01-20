@@ -1,15 +1,14 @@
 
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-  <h1>Testing edit page for admin users</h1>
 
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('Edit user') }}
     </h2>
   </x-slot>
-  <section>
-    <form method="POST" action="{{route('users.update', $user)}}" enctype="multipart/form-data" >
+  <section class="mx-7">
+    <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('users.update', $user)}}" enctype="multipart/form-data" >
       @method('put')
       @csrf
 
@@ -21,7 +20,7 @@
 
         </label>
 
-        <input class="border border-gray-400 p-2 w-full"
+        <input class="border border-gray-400 p-2 w-7/12"
                type="text"
                name="name"
                id="name"
@@ -43,7 +42,7 @@
 
         </label>
 
-        <input class="border border-gray-400 p-2 w-full"
+        <input class="border border-gray-400 p-2 w-7/12"
                type="text"
                name="password"
                id="password"
@@ -67,7 +66,7 @@
 
         </label>
 
-        <input class="border border-gray-400 p-2 w-full"
+        <input class="border border-gray-400 p-2 w-7/12"
                type="text"
                name="email"
                id="email"

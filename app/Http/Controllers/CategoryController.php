@@ -20,26 +20,22 @@ class CategoryController extends Controller
 
     public function index()
     {
-          return view('categories.index', [
-        'categories' => $this->getCategories()
-      ]);
-
+        return view('categories.index', [
+            'categories' => Category::all()
+        ]);
     }
 
-  public function getCategories() {
-    return Category::all();
-  }
 
-
-  public function categories(Category $category) {
-//    dd(\request()->all());
-
-    return view('welcome',[
-      'books' => $category->books,
-      'categories' => Category::all()
-    ]);
-
-  }
+//    public function categories(Category $category)
+//    {
+////    dd(\request()->all());
+//
+//        return view('welcome', [
+//            'books' => $category->books,
+//            'categories' => Category::all()
+//        ]);
+//
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,37 +44,36 @@ class CategoryController extends Controller
      */
     public function create()
     {
-      return view('categories.create');
+        return view('categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-    $attributes = request()->validate([
-        'name' => 'required'
-    ]);
+        $attributes = request()->validate([
+            'name' => 'required'
+        ]);
 
-      $attributes['slug'] = Str::slug($request->name);
+        $attributes['slug'] = Str::slug($request->name);
 
 //      dd('success validation succeeded');
 
 
+        Category::create($attributes);
 
-      Category::create($attributes);
-
-      return redirect('/');
+        return redirect('/categories');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 
@@ -94,21 +89,21 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
     public function edit(Category $category)
     {
-          return view('categories.edit')->with('category', $category);
+        return view('categories.edit')->with('category', $category);
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
 
@@ -123,28 +118,28 @@ class CategoryController extends Controller
 //      $title = $this->faker->unique()->word;
 //      $slug = Str::slug($title);
 
-      $attributes = request()->validate([
-        'name' => 'required'
+        $attributes = request()->validate([
+            'name' => 'required'
 
-      ]);
+        ]);
 
-      $attributes['slug'] = Str::slug($request->name);
+        $attributes['slug'] = Str::slug($request->name);
 
-      $category->update($attributes);
-      return to_route('categories.index', $category)->with('success', 'Category updated');
+        $category->update($attributes);
+        return to_route('categories.index', $category)->with('success', 'Category updated');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
 
 //    $id param changed to Book $book because we are injecting the entire model
     public function destroy(Category $category)
     {
-      $category->delete();
+        $category->delete();
     }
 }

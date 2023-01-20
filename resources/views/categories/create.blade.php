@@ -6,8 +6,8 @@
       {{ __('New Category') }}
     </h2>
   </x-slot>
-  <section>
-    <form method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data" >
+  <section class="mx-7">
+    <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data" >
       @csrf
 
       <div class="mb-6">
@@ -40,15 +40,10 @@
 
       </div>
 
+      <x-primary-button class="">
+        {{ __('Submit') }}
+      </x-primary-button>
 
-          <button type="submit" class="">
-            Submit
-
-          </button>
-
-        </div>
-
-      </div>
     </form>
 
   </section>

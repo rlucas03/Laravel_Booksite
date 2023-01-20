@@ -1,4 +1,6 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
+
+
 <x-app-layout>
 
 {{--  <x-guest-layout>--}}
@@ -9,15 +11,14 @@
       {{ __('New book') }}
     </h2>
   </x-slot>
-  <section>
-          <form method="POST" action="{{route('books.store')}}" enctype="multipart/form-data" >
+  <section class="mx-7">
+          <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.store')}}" enctype="multipart/form-data" >
               @csrf
-
 
             <div>
               <x-input-label for="title" :value="__('Title')" />
 
-              <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('name')" required autofocus />
+              <x-text-input id="title" class="block mt-1 w-7/12" type="text" name="title" :value="old('name')" required autofocus />
 
               <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
@@ -26,18 +27,16 @@
             <div class="mt-4">
               <x-input-label for="thumbnail" :value="__('Thumbnail')" />
 
-              <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" :value="old('thumbnail')" required autofocus />
+              <x-text-input id="thumbnail" class="block mt-1 w-7/12" type="file" name="thumbnail" :value="old('thumbnail')" required autofocus />
 
               <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
             </div>
 
 
-
-
             <div class="mt-4">
               <x-input-label for="description" :value="__('Description')" />
 
-              <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus />
+              <x-text-input id="description" class="block mt-1 w-7/12" type="text" name="description" :value="old('description')" required autofocus />
 
               <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
@@ -46,7 +45,7 @@
             <div class="mt-4">
               <x-input-label for="Book" :value="__('Book')" />
 
-              <x-text-input id="pdf" class="block mt-1 w-full" type="file" name="pdf" :value="old('pdf')" required autofocus />
+              <x-text-input id="pdf" class="block mt-1 w-7/12" type="file" name="pdf" :value="old('pdf')" required autofocus />
 
               <x-input-error :messages="$errors->get('pdf')" class="mt-2" />
             </div>
@@ -80,7 +79,7 @@
                 <div class="mt-4">
 
 
-                  <x-primary-button class="ml-3">
+                  <x-primary-button class="">
                     {{ __('Submit') }}
                   </x-primary-button>
 
@@ -92,5 +91,6 @@
   </section>
 </x-app-layout>
 
-{{--</x-guest-layout>--}}
+
 {{--  </x-auth-card>--}}
+{{--</x-guest-layout>--}}

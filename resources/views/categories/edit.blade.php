@@ -1,15 +1,14 @@
 
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-  <h1>Testing edit page for admin users</h1>
 
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('Edit Cat') }}
     </h2>
   </x-slot>
-  <section>
-    <form method="POST" action="{{route('categories.update', $category)}}" enctype="multipart/form-data" >
+  <section class="mx-7">
+    <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.update', $category)}}" enctype="multipart/form-data" >
       @method('put')
       @csrf
 
@@ -43,14 +42,9 @@
 
       </div>
 
-
-
-      <button type="submit" class="">
-        Submit
-
-      </button>
-
-
+      <x-primary-button class="">
+        {{ __('Submit') }}
+      </x-primary-button>
     </form>
 
   </section>

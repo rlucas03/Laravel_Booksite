@@ -6,21 +6,21 @@
       {{ __('Edit book') }}
     </h2>
   </x-slot>
-  <section>
-    <form method="POST" action="{{route('books.update', $book )}}" enctype="multipart/form-data" >
+  <section class="mx-7">
+    <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.update', $book )}}" enctype="multipart/form-data" >
       @method('put')
       @csrf
 
       <div>
         <x-input-label for="title" :value="__('Title')" />
 
-        <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{old('title', $book->title)}}" required autofocus />
+        <x-text-input id="title" class="block mt-1 w-7/12" type="text" name="title" value="{{old('title', $book->title)}}" required autofocus />
 
         <x-input-error :messages="$errors->get('title')" class="mt-2" />
       </div>
 
 
-      <div class="mb-6">
+      <div class="mt-4">
 
         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
 
@@ -31,18 +31,18 @@
 
       </div>
 
-      <div class="mb-6">
+      <div class="mt-4">
 
         <x-input-label for="description" :value="__('Description')" />
 
-        <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" value="{{old('description', $book->description)}}" required autofocus />
+        <x-text-input id="description" class="block mt-1 w-7/12" type="text" name="description" value="{{old('description', $book->description)}}" required autofocus />
 
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
 
 
       </div>
 
-      <div class="mb-6">
+      <div class="mt-4">
         <x-input-label for="book" :value="__('Book')" />
 
         <x-text-input id="pdf" class="block mt-1 w-full" type="file" name="pdf"  required autofocus />
@@ -53,7 +53,7 @@
 
       </div>
 
-      <div class="mb-6">
+      <div class="mt-4">
 {{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
 {{--               for="Category"--}}
 {{--        >--}}
@@ -80,12 +80,11 @@
 {{--        <p class="text-red-500">{{ $message }}</p>--}}
 {{--        @enderror--}}
 
-        <div class="mb-6">
+        <div class="mt-4">
 
-          <button type="submit" class="">
-            Submit
-
-          </button>
+          <x-primary-button class="mt-4">
+            {{ __('Submit') }}
+          </x-primary-button>
 
         </div>
 
