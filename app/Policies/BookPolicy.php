@@ -24,7 +24,6 @@ class BookPolicy
 //      dd('test');
         return true;
 //      }
-//        return false;
 
     }
 
@@ -36,7 +35,7 @@ class BookPolicy
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Book $book)
+    public function view(?User $user, Book $book)
     {
 //      dd('view');
 

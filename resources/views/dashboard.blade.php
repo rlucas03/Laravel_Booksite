@@ -14,48 +14,9 @@
         {{--      </h2>--}}
         {{--      @endauth--}}
 
-        <div class="text-center">
-
-            @hasanyrole('Super-Admin|Admin')
-            <x-admin-links></x-admin-links>
-
-            @endrole
-        </div>
+        @include('components.header')
 
     </x-slot>
-
-
-
-
-    {{--          links just for admin to manage users --}}
-    {{--    @hasanyrole('Super-Admin|Admin')--}}
-
-    {{--    <p class="p-6 text-blue-800 underline">--}}
-    {{--      <a href="{{ route('books.create') }}" class="text-blue-300">Upload new book</a>--}}
-    {{--    </p>--}}
-
-    {{--    <p class="p-6 text-blue-800 underline">--}}
-    {{--      <a href="{{ route('users.index') }}" class="text-blue-300">Admin section for users</a>--}}
-    {{--    </p>--}}
-
-    {{--    <p class="p-6 text-blue-800 underline">--}}
-    {{--      <a href="admin/books/index" class="text-blue-300">Admin section for books</a>--}}
-    {{--      <a href="{{ route('books.index') }}" class="text-blue-300">Admin section for books</a>--}}
-    {{--    </p>--}}
-
-    {{--    <p class="p-6 text-blue-800 underline">--}}
-    {{--      <a href="{{ route('categories.create') }}" class="text-blue-300">Admin section for Creating Categories</a>--}}
-    {{--    </p>--}}
-
-    {{--    <p class="p-6 text-blue-800 underline">--}}
-    {{--      <a href="{{ route('categories.index') }}" class="text-blue-300">Admin section for Editing Categories</a>--}}
-    {{--    </p>--}}
-
-    {{--    @endrole--}}
-
-    {{--  @endif--}}
-    {{--  @endcan--}}
-
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

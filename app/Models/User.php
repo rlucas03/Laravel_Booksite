@@ -49,7 +49,8 @@ class User extends Authenticatable
     ];
 
 //    the user model has a one to many relationship with books
-    public function books() {
+    public function books()
+    {
         return $this->hasMany(Book::class);
     }
 

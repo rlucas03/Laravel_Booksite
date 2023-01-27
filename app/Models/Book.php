@@ -38,7 +38,7 @@ class Book extends Model
 
 //return 'uuid'; changed to 'slug' to get book slug
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
@@ -49,10 +49,8 @@ class Book extends Model
 //}
 
 // a book belongs to a category
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-
-
         return $this->belongsTo(Category::class);
     }
 

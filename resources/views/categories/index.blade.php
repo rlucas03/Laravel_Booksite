@@ -1,48 +1,65 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-  <h1 class="mx-6 my-6">Admin edit all categories</h1>
+    {{--navigation at top--}}
+    @include('components.header')
 
-  <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-200">
-            <tbody class="bg-white divide-y divide-gray-200">
+    <h1 class="mx-6 my-6 text-2xl text-center">Admin edit all categories</h1>
+
+    {{--    new design--}}
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="mx-auto w-4/5 text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Category Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+                {{--                <th scope="col" class="px-6 py-3">--}}
+                {{--                    Delete--}}
+                {{--                </th>--}}
+            </tr>
+            </thead>
+            <tbody>
             @foreach ($categories as $category)
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900">
-                      <a href="{{ route('categories.show', $category) }}">
-                        {{ $category->name }}
 
-                      </a>
-                    </div>
-                  </div>
-                </td>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <a href="{{ route('categories.show', $category) }}">
+                            {{ $category->name }}
+                        </a>
+                    </th>
+                    <td class="px-6 py-4">
+                        <a href="{{ route('categories.edit', $category) }}"
+                           class="btn-link ml-auto">Edit</a>
+                    </td>
+                    {{--                    <td class="px-6 py-4">--}}
+                    {{--                        <form action="{{ route('categories.destroy', $category) }}" method="POST">--}}
+                    {{--                            @method('delete')--}}
+                    {{--                            @csrf--}}
+                    {{--                            <button type="submit" class="btn btn-danger ml-4"--}}
+                    {{--                                    onclick="return confirm('Are you sure you want to delete this book?')">--}}
+                    {{--                                Delete--}}
+                    {{--                            </button>--}}
+                    {{--                        </form>--}}
 
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="{{ route('categories.edit', $category) }}" class="btn-link ml-auto">Edit</a>
-                </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <form action="{{ route('categories.destroy', $category) }}" method="POST">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete this book?')">Delete</button>
+                    {{--                    </td>--}}
 
-                  </form>
-
-                </td>
-              </tr>
+                </tr>
             @endforeach
 
+
             </tbody>
-          </table>
-        </div>
-{{--        {{ $categories->links() }}--}}
-      </div>
+        </table>
+
+
+        {{--        {{ $categories->links() }}--}}
+
     </div>
-  </div>
+    {{--    end new design--}}
+
+
 </x-app-layout>
 

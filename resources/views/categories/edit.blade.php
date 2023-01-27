@@ -1,51 +1,59 @@
-
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
 
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Edit Cat') }}
-    </h2>
-  </x-slot>
-  <section class="mx-7">
-    <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.update', $category)}}" enctype="multipart/form-data" >
-      @method('put')
-      @csrf
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Edit Cat') }}
+        </h2>
+    </x-slot>
+    <section class="mx-7">
+        <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.update', $category)}}"
+              enctype="multipart/form-data">
+            @method('put')
+            @csrf
 
 
-      <div class="mb-6">
+            <div class="mb-6">
 
-        <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="name" :value="__('Name')"/>
 
-        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{($category->name)}}" required autofocus />
+                <x-text-input id="name" class="block w-7/12 mt-1" type="text" name="name" value="{{($category->name)}}"
+                              required autofocus/>
 
-        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
 
-{{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
-{{--               for="Name"--}}
-{{--        >--}}
-{{--          Name--}}
 
-{{--        </label>--}}
+            </div>
 
-{{--        <input class="border border-gray-400 p-2 w-full"--}}
-{{--               type="text"--}}
-{{--               name="name"--}}
-{{--               id="name"--}}
-{{--               value="{{ ($category->name) }}"--}}
-{{--               required--}}
-{{--        >--}}
+            <x-primary-button class="">
+                {{ __('Submit') }}
+            </x-primary-button>
+        </form>
 
-{{--        @error('name')--}}
-{{--        <p class="text-red-500">{{ $message }}</p>--}}
-{{--        @enderror--}}
+        <form action="{{ route('categories.destroy', $category) }}" method="POST">
+            @method('delete')
+            @csrf
+            <button type="submit"
+                    onclick="return confirm('WARNING, are you sure you want to delete this Category? This may cause errors on the website')"
+                    class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800
+                      focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm
+                       px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white
+                        dark:hover:bg-red-600 dark:focus:ring-red-900 ml-6"
+            >
+                DELETE CATEGORY
+            </button>
+        </form>
 
-      </div>
 
-      <x-primary-button class="">
-        {{ __('Submit') }}
-      </x-primary-button>
-    </form>
+        {{--      <td class="px-6 py-4 whitespace-nowrap text-right text-xl font-medium">--}}
+        {{--          <form action="{{ route('categories.destroy', $category) }}" method="POST">--}}
+        {{--              @method('delete')--}}
+        {{--              @csrf--}}
+        {{--              <button type="submit" href="{{ route('dashboard') }}" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete this Category?')">DELETE CATEGORY</button>--}}
 
-  </section>
+        {{--          </form>--}}
+
+        {{--      </td>--}}
+
+    </section>
 </x-app-layout>

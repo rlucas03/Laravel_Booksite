@@ -11,6 +11,13 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->authorizeResource(Category::class, 'category');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +86,7 @@ class CategoryController extends Controller
 
 //    replace the primary key with the uuid of each book
 //route model binding. changed $id to $uuid to Book $book
-    public function show(Category $category)
+    public function show(Category $category): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
 //      dd($category->books);
 
@@ -108,7 +115,7 @@ class CategoryController extends Controller
      */
 
 //    $id param changed to Book $book
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category): \Illuminate\Http\RedirectResponse
     {
 
 //      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
@@ -141,5 +148,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        return redirect('categories');
+
     }
 }
