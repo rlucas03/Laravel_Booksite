@@ -8,7 +8,7 @@
         <a href="{{ route('books.show', $book) }}">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white break-words">
                 Book Title:
-                {{ Str::limit($book->title, 15) }}
+                {{ Str::limit($book->title, 11) }}
             </h5>
 
         </a>

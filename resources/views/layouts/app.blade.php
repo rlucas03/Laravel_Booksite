@@ -21,17 +21,28 @@
 
     <!-- Page Heading -->
     @if (isset($header))
-        <header class="bg-white shadow">
+        <header class="bg-white shadow border-solid border-b border-purple-700">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
+{{--                not working?--}}
+                @include('components.header')
             </div>
-
         </header>
     @endif
 
     <!-- Page Content -->
     <main>
-        {{ $slot }}
+        <div class="container mx-auto">
+
+            <div class="py-12">
+
+                <div class="bg-white mx-auto sm:px-6 lg:px-8 shadow-md sm:rounded-lg">
+                    {{ $slot }}
+                </div>
+            </div>
+
+        </div>
+
     </main>
 </div>
 </body>

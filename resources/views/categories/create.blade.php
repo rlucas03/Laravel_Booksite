@@ -2,11 +2,11 @@
 <x-app-layout>
     {{--this file can perhaps be deleted..got books create already--}}
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('New Category') }}
-        </h2>
-        @include('components.header')
+
     </x-slot>
+{{--    <h2 class="font-semibold text-xl text-gray-800 leading-tight mx-auto">--}}
+{{--        {{ __('New Category') }}--}}
+{{--    </h2>--}}
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.store')}}"
               enctype="multipart/form-data">
@@ -14,7 +14,7 @@
 
             <div class="mb-6">
 
-                <x-input-label for="name" :value="__('Name')"/>
+                <x-input-label for="name" :value="__('New Category Name')"/>
 
                 <x-text-input id="name" class="block mt-1 w-2/5" type="text" name="name" :value="old('name')" required
                               autofocus/>

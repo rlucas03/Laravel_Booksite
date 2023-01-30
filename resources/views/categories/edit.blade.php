@@ -5,6 +5,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Edit Cat') }}
         </h2>
+
+        @include('components.header')
     </x-slot>
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.update', $category)}}"
@@ -22,9 +24,7 @@
 
                 <x-input-error :messages="$errors->get('name')" class="mt-2"/>
 
-
             </div>
-
             <x-primary-button class="">
                 {{ __('Submit') }}
             </x-primary-button>

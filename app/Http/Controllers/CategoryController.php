@@ -12,7 +12,6 @@ use Illuminate\Validation\Rule;
 class CategoryController extends Controller
 {
 
-
     public function __construct()
     {
         $this->authorizeResource(Category::class, 'category');
@@ -100,7 +99,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
-    public function edit(Category $category)
+    public function edit(Category $category): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('categories.edit')->with('category', $category);
 
@@ -127,7 +126,6 @@ class CategoryController extends Controller
 
         $attributes = request()->validate([
             'name' => 'required'
-
         ]);
 
         $attributes['slug'] = Str::slug($request->name);

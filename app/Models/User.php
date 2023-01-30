@@ -54,6 +54,7 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
 
+
 //  public static function showOnUserPage($no_of_users = 20) {
 //    return User::latest()->filter()->paginate($no_of_users);
 //  }

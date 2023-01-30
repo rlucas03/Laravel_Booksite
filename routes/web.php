@@ -1,12 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminBookController;
-use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WelcomeController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +25,6 @@ use Illuminate\Support\Facades\Route;
 //  return view('home');
 //});
 
-
-// old home route
-//Route::get('/', [BookController::class, 'index'])->name('home');
 
 Route::get('/my-books', [BookController::class, 'myBooks'])->name('my-books');
 

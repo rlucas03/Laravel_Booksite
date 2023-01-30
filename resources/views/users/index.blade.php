@@ -1,5 +1,8 @@
 <x-app-layout>
-    @include('components.header')
+{{--    @include('components.header')--}}
+    <x-slot name="header">
+    </x-slot>
+
     <h1 class="mx-6 my-6 text-2xl text-center">Admin User control panel</h1>
 
     {{-- users index --}}

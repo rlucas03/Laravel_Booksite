@@ -1,8 +1,8 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
     {{--navigation at top--}}
-    @include('components.header')
-
+    <x-slot name="header">
+    </x-slot>
     <h1 class="mx-6 my-6 text-2xl text-center">Admin edit all categories</h1>
 
     {{--    new design--}}

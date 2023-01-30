@@ -16,7 +16,6 @@ class CategorySeeder extends Seeder
     public function run()
     {
 
-
       Category::truncate();
       Category::factory(10)->create();
 
@@ -27,7 +26,6 @@ class CategorySeeder extends Seeder
 //           'slug' => 'fiction'
 //        ]);
 //
-
     }
 }
 

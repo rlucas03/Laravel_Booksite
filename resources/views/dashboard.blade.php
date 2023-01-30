@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight inline-flex mx-2 text-black">
-            {{ __('Dashboard') }}
-        </h2>
+        {{--        <h2 class="font-semibold text-xl leading-tight inline-flex mx-2 text-black">--}}
+        {{--            {{ __('Dashboard') }}--}}
+        {{--        </h2>--}}
 
         {{--      <h2 class="font-semibold text-xl text-green-900 inline-flex items-center mx-2">--}}
         {{--        <a href="{{ route('welcome') }}" class="text-green-900 text-center">Home</a>--}}
@@ -14,10 +14,10 @@
         {{--      </h2>--}}
         {{--      @endauth--}}
 
-        @include('components.header')
-
     </x-slot>
-
+    <h2 class="font-semibold text-xl leading-tight inline-flex mx-2 text-black">
+        {{ __('Dashboard') }}
+    </h2>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

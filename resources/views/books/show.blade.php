@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Individual Book') }}
-        </h2>
+{{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
+{{--            {{ __('Individual Book') }}--}}
+{{--        </h2>--}}
     </x-slot>
 
 
@@ -31,12 +31,10 @@
                         <button type="submit" class="btn btn-danger ml-4"
                                 onclick="return confirm('Are you sure you want to delete this book?')">Delete Book
                         </button>
-
                     </form>
                 @endauth
-
             </div>
-            <div class="my-6 p-6 bg-gray-300 border-b border-gray-200 shadow-sm sm:rounded-lg">
+            <div class="my-6 p-6 bg-slate-200 border-b border-gray-200 shadow-sm sm:rounded-lg">
                 <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl">
 
                 <h2 class="font-bold text-2xl">
@@ -59,9 +57,13 @@
                 </p>
 
                 <p class="mt-2">
-                    Pdf:
-                    <a href=" {{asset('storage/'.$book->pdf)}}" target="_blank" download="{{ $book->pdf }}">download</a>
-                </p>
+                    @auth
+                        Pdf:
+                        <a class="hover:bg-blue-500" href=" {{asset('storage/'.$book->pdf)}}" target="_blank"
+                           download="{{ $book->pdf }}">download</a>
+                    @else
+                        Login to download
+                    @endauth                </p>
             </div>
         </div>
     </div>

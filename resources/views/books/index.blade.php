@@ -1,15 +1,9 @@
 <x-app-layout>
     {{--  MY BOOKS PAGE --}}
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex mx-2 px-5">
-            {{ __('My Books') }}
-        </h2>
-        <div class="text-center">
-            @hasanyrole('Super-Admin|Admin')
-
-            <x-admin-links></x-admin-links>
-            @endrole
-        </div>
+{{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex mx-2 px-5">--}}
+{{--            {{ __('My Books') }}--}}
+{{--        </h2>--}}
     </x-slot>
 
     <div class="py-12">

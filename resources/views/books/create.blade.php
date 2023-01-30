@@ -1,17 +1,13 @@
 {{--<script src="https://cdn.tailwindcss.com"></script>--}}
-
-
 <x-app-layout>
 
     {{--  <x-guest-layout>--}}
     {{--    <x-auth-card>--}}
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('New book') }}
-        </h2>
-        @include('components.header')
-
+{{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
+{{--            {{ __('New book') }}--}}
+{{--        </h2>--}}
     </x-slot>
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.store')}}"
