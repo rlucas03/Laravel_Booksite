@@ -56,11 +56,7 @@
             </div>
 
             <div class="mt-4">
-                {{--        <label class="block mb-2 uppercase font-bold text-xs"--}}
-                {{--               for="Category"--}}
-                {{--        >--}}
-                {{--          Category--}}
-                {{--        </label>--}}
+
                 <x-input-label for="Category" :value="__('Category')"/>
 
 
@@ -78,10 +74,6 @@
 
 
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
-
-                {{--        @error('category_id')--}}
-                {{--        <p class="text-red-500">{{ $message }}</p>--}}
-                {{--        @enderror--}}
 
                 <div class="mt-4">
 

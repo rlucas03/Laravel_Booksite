@@ -1,13 +1,9 @@
-{{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
 
-    {{--  <x-guest-layout>--}}
-    {{--    <x-auth-card>--}}
-
     <x-slot name="header">
-{{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
-{{--            {{ __('New book') }}--}}
-{{--        </h2>--}}
+        {{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
+        {{--            {{ __('New book') }}--}}
+        {{--        </h2>--}}
     </x-slot>
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.store')}}"
@@ -54,11 +50,7 @@
             </div>
 
             <div class="mt-4">
-                {{--                  <label class="block mb-2 uppercase font-bold text-xs"--}}
-                {{--                         for="Category"--}}
-                {{--                  >--}}
-                {{--                      Category--}}
-                {{--                  </label>--}}
+
                 <x-input-label for="Category" :value="__('Category')"/>
 
 
@@ -75,25 +67,13 @@
 
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
 
-                {{--                @error('category_id')--}}
-                {{--                  <p class="text-red-500">{{ $message }}</p>--}}
-                {{--                @enderror--}}
-
                 <div class="mt-4">
-
-
                     <x-primary-button class="">
                         {{ __('Submit') }}
                     </x-primary-button>
-
                 </div>
-
             </div>
         </form>
 
     </section>
 </x-app-layout>
-
-
-{{--  </x-auth-card>--}}
-{{--</x-guest-layout>--}}

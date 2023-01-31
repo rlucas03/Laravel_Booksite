@@ -923,6 +923,10 @@ input[type="range"]::-ms-fill-lower{
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.mx-2{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .mx-6{
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -950,10 +954,6 @@ input[type="range"]::-ms-fill-lower{
 .mx-1{
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-}
-.mx-2{
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 .ml-3{
   margin-left: 0.75rem;
@@ -1023,9 +1023,6 @@ input[type="range"]::-ms-fill-lower{
 }
 .mt-3{
   margin-top: 0.75rem;
-}
-.mb-11{
-  margin-bottom: 2.75rem;
 }
 .block{
   display: block;
@@ -1116,9 +1113,6 @@ input[type="range"]::-ms-fill-lower{
 }
 .max-w-6xl{
   max-width: 72rem;
-}
-.max-w-sm{
-  max-width: 24rem;
 }
 .flex-1{
   flex: 1 1 0%;
@@ -1328,14 +1322,6 @@ input[type="range"]::-ms-fill-lower{
 .bg-emerald-700{
   --tw-bg-opacity: 1;
   background-color: rgb(4 120 87 / var(--tw-bg-opacity));
-}
-.bg-gray-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
-}
-.bg-green-700{
-  --tw-bg-opacity: 1;
-  background-color: rgb(4 108 78 / var(--tw-bg-opacity));
 }
 .fill-current{
   fill: currentColor;
@@ -1574,6 +1560,10 @@ input[type="range"]::-ms-fill-lower{
   --tw-text-opacity: 1;
   color: rgb(81 69 205 / var(--tw-text-opacity));
 }
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
 .text-red-500{
   --tw-text-opacity: 1;
   color: rgb(240 82 82 / var(--tw-text-opacity));
@@ -1597,18 +1587,6 @@ input[type="range"]::-ms-fill-lower{
 .text-red-600{
   --tw-text-opacity: 1;
   color: rgb(224 36 36 / var(--tw-text-opacity));
-}
-.text-black{
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-.text-blue-800{
-  --tw-text-opacity: 1;
-  color: rgb(30 66 159 / var(--tw-text-opacity));
-}
-.text-blue-300{
-  --tw-text-opacity: 1;
-  color: rgb(164 202 254 / var(--tw-text-opacity));
 }
 .underline{
   text-decoration-line: underline;
@@ -1707,6 +1685,10 @@ input[type="range"]::-ms-fill-lower{
   --tw-bg-opacity: 1;
   background-color: rgb(155 28 28 / var(--tw-bg-opacity));
 }
+.hover\:bg-blue-500:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
+}
 .hover\:bg-gray-700:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -1714,14 +1696,6 @@ input[type="range"]::-ms-fill-lower{
 .hover\:bg-blue-800:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
-}
-.hover\:bg-blue-500:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
-}
-.hover\:bg-green-800:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(3 84 63 / var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover{
   --tw-text-opacity: 1;
@@ -1836,10 +1810,6 @@ input[type="range"]::-ms-fill-lower{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(205 219 254 / var(--tw-ring-opacity));
 }
-.focus\:ring-green-300:focus{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(132 225 188 / var(--tw-ring-opacity));
-}
 .focus\:ring-opacity-50:focus{
   --tw-ring-opacity: 0.5;
 }
@@ -1890,10 +1860,6 @@ input[type="range"]::-ms-fill-lower{
   --tw-bg-opacity: 1;
   background-color: rgb(28 100 242 / var(--tw-bg-opacity));
 }
-.dark .dark\:bg-green-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(5 122 85 / var(--tw-bg-opacity));
-}
 .dark .dark\:text-gray-400{
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -1922,10 +1888,6 @@ input[type="range"]::-ms-fill-lower{
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
 }
-.dark .dark\:hover\:bg-green-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(4 108 78 / var(--tw-bg-opacity));
-}
 .dark .dark\:hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1945,10 +1907,6 @@ input[type="range"]::-ms-fill-lower{
 .dark .dark\:focus\:ring-blue-800:focus{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(30 66 159 / var(--tw-ring-opacity));
-}
-.dark .dark\:focus\:ring-green-800:focus{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(3 84 63 / var(--tw-ring-opacity));
 }
 @media (min-width: 640px){
   .sm\:-mx-6{

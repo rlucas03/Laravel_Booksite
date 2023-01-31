@@ -2,12 +2,12 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Cat') }}
-        </h2>
 
-        @include('components.header')
+
     </x-slot>
+    <h2 class="py-1 font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Edit Cat') }}
+    </h2>
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.update', $category)}}"
               enctype="multipart/form-data">
@@ -45,15 +45,7 @@
         </form>
 
 
-        {{--      <td class="px-6 py-4 whitespace-nowrap text-right text-xl font-medium">--}}
-        {{--          <form action="{{ route('categories.destroy', $category) }}" method="POST">--}}
-        {{--              @method('delete')--}}
-        {{--              @csrf--}}
-        {{--              <button type="submit" href="{{ route('dashboard') }}" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete this Category?')">DELETE CATEGORY</button>--}}
 
-        {{--          </form>--}}
-
-        {{--      </td>--}}
 
     </section>
 </x-app-layout>

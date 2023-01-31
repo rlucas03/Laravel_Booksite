@@ -18,13 +18,24 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
     @include('layouts.navigation')
+    @if (Route::has('login'))
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth
+                {{--                                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
+            @else
+                <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
 
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-white underline">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
     <!-- Page Heading -->
     @if (isset($header))
         <header class="bg-white shadow border-solid border-b border-purple-700">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
-{{--                not working?--}}
                 @include('components.header')
             </div>
         </header>

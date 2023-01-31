@@ -1,6 +1,4 @@
-{{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
-    {{--navigation at top--}}
     <x-slot name="header">
     </x-slot>
     <h1 class="mx-6 my-6 text-2xl text-center">Admin edit all categories</h1>
@@ -16,9 +14,7 @@
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
-                {{--                <th scope="col" class="px-6 py-3">--}}
-                {{--                    Delete--}}
-                {{--                </th>--}}
+
             </tr>
             </thead>
             <tbody>
@@ -34,28 +30,12 @@
                         <a href="{{ route('categories.edit', $category) }}"
                            class="btn-link ml-auto">Edit</a>
                     </td>
-                    {{--                    <td class="px-6 py-4">--}}
-                    {{--                        <form action="{{ route('categories.destroy', $category) }}" method="POST">--}}
-                    {{--                            @method('delete')--}}
-                    {{--                            @csrf--}}
-                    {{--                            <button type="submit" class="btn btn-danger ml-4"--}}
-                    {{--                                    onclick="return confirm('Are you sure you want to delete this book?')">--}}
-                    {{--                                Delete--}}
-                    {{--                            </button>--}}
-                    {{--                        </form>--}}
-
-
-                    {{--                    </td>--}}
-
                 </tr>
             @endforeach
-
 
             </tbody>
         </table>
 
-
-        {{--        {{ $categories->links() }}--}}
 
     </div>
     {{--    end new design--}}

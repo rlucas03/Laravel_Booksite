@@ -31,8 +31,6 @@ class Book extends Model
                         $qry->where('name', 'like', '%' . request('search') . '%');
                     });
                 });
-//          ->orWhere('category_id', 'like', '%' . request('search') . '%');
-//          ->orWhere('user_id', 'like', '%' . request('search') . '%');
         }
     }
 
@@ -43,10 +41,6 @@ class Book extends Model
         return 'slug';
     }
 
-// return book slug
-//public function getRouteKeyName() {
-//      return 'slug';
-//}
 
 // a book belongs to a category
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -54,8 +48,7 @@ class Book extends Model
         return $this->belongsTo(Category::class);
     }
 
-//    with this method, we can access the user of the book
-//  like any other property of the book model.. a book belongs to user
+//  a book belongs to a user
     public function user()
     {
         return $this->belongsTo(User::class);

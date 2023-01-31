@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
+use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,6 @@ class UserController extends Controller
     {
         // fetch books from the db & pass content to view to display them
 //      using eloquent, get all the books of this logged in user and display them
-//    dd('test');
         return view('users.index', [
 //        'users' => User::paginate(50)
             'users' => $this->getUsers(),
@@ -35,7 +35,6 @@ class UserController extends Controller
 
     public function getUsers()
     {
-        //      return User::all();
         return User::paginate(20);
     }
 
@@ -72,14 +71,10 @@ class UserController extends Controller
 //route model binding. changed $id to $uuid to Book $book to User $user
     public function show(User $user)
     {
-//      $book = Book::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
-//        if ($book->user_id != Auth::id()) {
-//          return abort(403);
-//        }
+
 
         $data['user'] = $user;
         return view('users.show', compact('data'));
-//        return view('users.index', compact('data'));
     }
 
     /**
@@ -110,7 +105,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 //        dd($request);
-//    if its the authorized user, all of this is done
 
 //      if ($book->user_id != Auth::id()) {
 //        return abort(403);
@@ -118,11 +112,24 @@ class UserController extends Controller
 
         $attributes = request()->validate([
             'name' => 'required',
-            'password' => 'required',
+//            'current_password' => ['required', new MatchOldPassword],
+            'password' => ['confirmed'],
+//            'new_confirm_password' => ['same:new_password'],
             'email' => 'required',
+
         ]);
 
-        $attributes['password'] = Hash::make($request['password']);
+//        $attributes = request()->validate([
+//            'name' => 'required',
+//            'password' => 'required',
+//            'email' => 'required',
+//        ]);
+        if ($attributes['password'] == null) {
+            $attributes['password'] = $user->password;
+        } else {
+            $attributes['password'] = Hash::make($attributes['password']);
+        }
+
 //      $attributes['uuid'] = Str::uuid();
 //      $attributes['user_id'] = auth()->id();
 //      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');

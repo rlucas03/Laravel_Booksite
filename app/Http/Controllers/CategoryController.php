@@ -31,18 +31,6 @@ class CategoryController extends Controller
         ]);
     }
 
-
-//    public function categories(Category $category)
-//    {
-////    dd(\request()->all());
-//
-//        return view('welcome', [
-//            'books' => $category->books,
-//            'categories' => Category::all()
-//        ]);
-//
-//    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -67,8 +55,6 @@ class CategoryController extends Controller
 
         $attributes['slug'] = Str::slug($request->name);
 
-//      dd('success validation succeeded');
-
 
         Category::create($attributes);
 
@@ -83,11 +69,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 
-//    replace the primary key with the uuid of each book
-//route model binding. changed $id to $uuid to Book $book
+
     public function show(Category $category): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-//      dd($category->books);
 
         return view('categories.show')->with('category', $category);
     }
@@ -98,7 +82,7 @@ class CategoryController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-//    $id param changed to Book $book
+
     public function edit(Category $category): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('categories.edit')->with('category', $category);
@@ -113,16 +97,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-//    $id param changed to Book $book
     public function update(Request $request, Category $category): \Illuminate\Http\RedirectResponse
     {
 
-//      if ($book->user_id != Auth::id() && auth()->user()?->name !== 'Ryan' ) {
-//        return abort(403);
-//      }
-
-//      $title = $this->faker->unique()->word;
-//      $slug = Str::slug($title);
 
         $attributes = request()->validate([
             'name' => 'required'
@@ -142,9 +119,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-//    $id param changed to Book $book because we are injecting the entire model
-    public function destroy(Category $category)
+    public function destroy(Category $category, Request $request)
     {
+        // 1. fetch existing books from the target category
+        // 2. change the category for all fetched books to alternative category
+        // 3. delete the target category
         $category->delete();
         return redirect('categories');
 

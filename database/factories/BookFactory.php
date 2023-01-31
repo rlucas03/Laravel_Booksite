@@ -27,13 +27,9 @@ class BookFactory extends Factory
       $title = $this->bookTitle(4);
       $slug = Str::slug($title);
         return [
-//            'user_id' => User::factory(),
-//           'category_id' => Category::factory(),
             'category_id' => rand(1,10),
             'title' => $title,
             'slug' => $slug,
-//            'slug' => $this->faker->word,
-//            'title' => $this->faker->word,
             'uuid' => $this->faker->randomNumber(),
 
 //            'thumbnail' =>  'thumbnails/'.'AuiJniCXrtbB6LJq740h8OfS7DFugJUOvvZzoIct.png',

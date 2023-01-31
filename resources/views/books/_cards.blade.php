@@ -35,7 +35,7 @@
                 <a class="hover:bg-blue-500" href=" {{asset('storage/'.$book->pdf)}}" target="_blank"
                    download="{{ $book->pdf }}">download</a>
             @else
-                Login to download
+                <a href="{{ route('login') }}" class="underline">Log in to download</a>
             @endauth
         </p>
         <a href="{{ route('books.show', $book) }}"

@@ -1,4 +1,3 @@
-{{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
 
     <x-slot name="header">
@@ -34,24 +33,64 @@
 
             </div>
 
+{{--            <div class="mb-6">--}}
+{{--                <label class="block mb-2 uppercase font-bold text-xs" for="name">Current Password</label>--}}
+
+
+{{--                <input class="border border-gray-400 p-2 w-7/12"--}}
+{{--                       type="password"--}}
+{{--                       name="password"--}}
+{{--                       id="password"--}}
+{{--                       value="{{ ($user->password) }}"--}}
+
+{{--                       required--}}
+{{--                >--}}
+
+{{--                @error('password')--}}
+{{--                <p class="text-red-500">{{ $message }}</p>--}}
+{{--                @enderror            </div>--}}
+
             <div class="mb-6">
                 <label class="block mb-2 uppercase font-bold text-xs"
-                       for="Password"
+                       for="password"
                 >
-                    Password
+                    new password
 
                 </label>
 
                 <input class="border border-gray-400 p-2 w-7/12"
-                       type="text"
+                       type="password"
                        name="password"
                        id="password"
-                       value="{{ ($user->password) }}"
+{{--                       value="{{ ($user->password) }}"--}}
 
                        required
                 >
 
                 @error('password')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
+
+            </div>
+
+            <div class="mb-6">
+                <label class="block mb-2 uppercase font-bold text-xs"
+                       for="password_confirmation"
+                >
+                    new password confirmation
+
+                </label>
+
+                <input class="border border-gray-400 p-2 w-7/12"
+                       type="password"
+                       name="password_confirmation"
+                       id="password_confirmation"
+{{--                       value="{{ ($user->password) }}"--}}
+
+                       required
+                >
+
+                @error('password_confirmation')
                 <p class="text-red-500">{{ $message }}</p>
                 @enderror
 

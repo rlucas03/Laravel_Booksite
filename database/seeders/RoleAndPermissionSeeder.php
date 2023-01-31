@@ -58,21 +58,11 @@ class RoleAndPermissionSeeder extends Seeder
       ]);
       $user->assignRole($role);
 
-//
+
 
 //      $role->givePermissionTo([
 //        'manage-users',
 //        'create-users',
-//        'edit-users',
-//        'delete-users',
-//        'manage-books',
-//        'create-books',
-//        'edit-books',
-//        'delete-books',
-//        'manage-categories',
-//        'create-categories',
-//        'edit-categories',
-//        'delete-categories'
 //      ]);
 
 //      $editorRole->givePermissionTo([

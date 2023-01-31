@@ -7,7 +7,7 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-{{--                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
+{{--                                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
             @else
                 <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
 
@@ -20,8 +20,7 @@
 
     <!-- Search Input -->
 
-    {{--            flowbite search--}}
-    <form class="flex items-center" method="GET" action="#">
+    <form class="flex items-center py-2" method="GET" action="#">
         @if (request('category'))
             <input type="hidden" name="category" value="{{ request('category') }}">
         @endif
@@ -78,25 +77,16 @@
     </nav>
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
 
-        {{--    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700--}}
-        {{--    w-full mb-4 bg-gray-500">--}}
 
         @foreach($books as $book)
             @include('books._cards')
         @endforeach
-        {{--  </div>--}}
 
         {{--  main div--}}
     </div>
 
 
-    {{--                      </div>--}}
-    {{--                      pagination links--}}
     {{ $books->withQueryString()->links() }}
-
-
-
-
 
 
 </x-app-layout>
