@@ -106,34 +106,17 @@ class UserController extends Controller
     {
 //        dd($request);
 
-//      if ($book->user_id != Auth::id()) {
-//        return abort(403);
-//      }
-
         $attributes = request()->validate([
             'name' => 'required',
-//            'current_password' => ['required', new MatchOldPassword],
             'password' => ['confirmed'],
-//            'new_confirm_password' => ['same:new_password'],
             'email' => 'required',
-
         ]);
 
-//        $attributes = request()->validate([
-//            'name' => 'required',
-//            'password' => 'required',
-//            'email' => 'required',
-//        ]);
         if ($attributes['password'] == null) {
             $attributes['password'] = $user->password;
         } else {
             $attributes['password'] = Hash::make($attributes['password']);
         }
-
-//      $attributes['uuid'] = Str::uuid();
-//      $attributes['user_id'] = auth()->id();
-//      $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
-//      $attributes['pdf'] = \request()->file('pdf')->store('pdfs');
 
         $user->update($attributes);
         return to_route('users.index', $user)->with('success', 'User updated');
@@ -150,9 +133,6 @@ class UserController extends Controller
 //    $id param changed to Book $book because we are injecting the entire model
     public function destroy(User $user)
     {
-//      if ($book->user_id != Auth::id()) {
-//        return abort(403);
-//      }
 
         $user->delete();
         return to_route('users.index')->with('success', 'User deleted');

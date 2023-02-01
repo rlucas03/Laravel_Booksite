@@ -61,7 +61,6 @@ class CategoryController extends Controller
         return redirect('/categories');
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -119,13 +118,19 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function destroy(Category $category, Request $request)
+    public function destroy(Category $category, Request $request): \Illuminate\Http\RedirectResponse
     {
         // 1. fetch existing books from the target category
         // 2. change the category for all fetched books to alternative category
         // 3. delete the target category
+        $categoryBooks = $category->books()->get();
+
+        foreach ($categoryBooks as $books) {
+            Book::where('category_id',$books->category_id)->update(['category_id' => 34]);
+        }
+
         $category->delete();
         return redirect('categories');
-
     }
 }
+

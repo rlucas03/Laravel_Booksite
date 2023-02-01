@@ -14,13 +14,12 @@
             @method('put')
             @csrf
 
-
             <div class="mb-6">
 
                 <x-input-label for="name" :value="__('Name')"/>
 
                 <x-text-input id="name" class="block w-7/12 mt-1" type="text" name="name" value="{{($category->name)}}"
-                              required autofocus/>
+                               autofocus/>
 
                 <x-input-error :messages="$errors->get('name')" class="mt-2"/>
 
@@ -29,6 +28,37 @@
                 {{ __('Submit') }}
             </x-primary-button>
         </form>
+
+        {{--        move all books from one cat to another--}}
+{{--        <form class="rounded px- 8 pt-6 pb-8 mb-4" method="POST" action="{{route('categories.delete', $category )}}"--}}
+{{--              enctype="multipart/form-data">--}}
+{{--            @method('put')--}}
+{{--            @csrf--}}
+
+{{--            <div class="mt-4 p-2">--}}
+
+{{--                <x-input-label for="Category" :value="__('Change books category')"/>--}}
+
+{{--                <select name="category_id" id="category_id">--}}
+{{--                    @php--}}
+{{--                        $categories = \App\Models\Category::all();--}}
+{{--                    @endphp--}}
+
+{{--                    @foreach ($categories as $category)--}}
+{{--                        <option--}}
+{{--                            value="{{ $category->id }}"--}}
+{{--                        >{{ $category->name }} </option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+
+
+{{--                <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>--}}
+{{--                <x-primary-button class="">--}}
+{{--                    {{ __('Submit') }}--}}
+{{--                </x-primary-button>--}}
+{{--            </div>--}}
+{{--        </form>--}}
+        {{--        --}}
 
         <form action="{{ route('categories.destroy', $category) }}" method="POST">
             @method('delete')
@@ -43,8 +73,6 @@
                 DELETE CATEGORY
             </button>
         </form>
-
-
 
 
     </section>

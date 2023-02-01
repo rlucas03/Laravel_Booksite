@@ -7,7 +7,7 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-{{--                                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
+                {{--                                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
             @else
                 <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
 
@@ -71,7 +71,6 @@
                         {{ $category->name }}
                     </a>
                 </li>
-                {{--                        <br>--}}
             @endforeach
         </ul>
     </nav>

@@ -14,6 +14,9 @@
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    New
+                </th>
 
             </tr>
             </thead>
@@ -29,6 +32,10 @@
                     <td class="px-6 py-4">
                         <a href="{{ route('categories.edit', $category) }}"
                            class="btn-link ml-auto">Edit</a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{{ route('categories.create', $category) }}"
+                           class="btn-link ml-auto">New Cat</a>
                     </td>
                 </tr>
             @endforeach

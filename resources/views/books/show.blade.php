@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
-        {{--            {{ __('Individual Book') }}--}}
-        {{--        </h2>--}}
+
     </x-slot>
 
 
@@ -33,6 +31,9 @@
             </form>
         @endauth
     </div>
+    <h2 class="mt-1 font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Individual Book') }}
+    </h2>
     <div class="my-6 p-6 bg-slate-200 border-b border-gray-200 shadow-sm sm:rounded-lg">
         <img height="50" width="50" src="{{ asset('storage/'.$book->thumbnail) }}" class="rounded-xl">
 

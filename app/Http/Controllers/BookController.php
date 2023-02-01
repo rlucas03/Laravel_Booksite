@@ -39,14 +39,14 @@ class BookController extends Controller
         return $this->welcome();
     }
 
-    public function adminDashboard()
+    public function adminDashboard(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('admin.books.index', [
             'books' => Book::paginate(50)
         ]);
     }
 
-    public function welcome()
+    public function welcome(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('welcome', [
             'books' => Book::showOnHomePage(12),
@@ -55,7 +55,7 @@ class BookController extends Controller
     }
 
 
-    public function myBooks()
+    public function myBooks(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
         // fetch books from the db & pass content to view to display them
@@ -70,7 +70,7 @@ class BookController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('books.create');
     }
@@ -81,7 +81,7 @@ class BookController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
 
         $attributes = request()->validate([
@@ -127,7 +127,7 @@ class BookController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 //    $id param changed to Book $book
-    public function edit(Request $request, Book $book)
+    public function edit(Request $request, Book $book): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
 
         return view('books.edit')->with('book', $book);
@@ -143,11 +143,10 @@ class BookController extends Controller
      */
 
 //    $id param changed to Book $book
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Book $book): \Illuminate\Http\RedirectResponse
     {
 
 //    if it's the authorized user, all of this is done
-
 
         $attributes = request()->validate([
             'title' => 'required',
@@ -167,7 +166,6 @@ class BookController extends Controller
         return to_route('books.show', $book)->with('success', 'Book updated');
 
     }
-
     /**
      * Remove the specified resource from storage.
      *

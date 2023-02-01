@@ -1,12 +1,12 @@
-{{--<script src="https://cdn.tailwindcss.com"></script>--}}
 <x-app-layout>
 
     <x-slot name="header">
+
+    </x-slot>
+    <section class="mx-7">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Edit book') }}
         </h2>
-    </x-slot>
-    <section class="mx-7">
         <form class="rounded px- 8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.update', $book )}}"
               enctype="multipart/form-data">
             @method('put')
@@ -72,16 +72,15 @@
                     @endforeach
                 </select>
 
-
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
 
-                <div class="mt-4">
+            </div>
 
-                    <x-primary-button class="mt-4">
-                        {{ __('Submit') }}
-                    </x-primary-button>
+            <div class="mt-4">
 
-                </div>
+                <x-primary-button class="mt-4">
+                    {{ __('Submit') }}
+                </x-primary-button>
 
             </div>
         </form>

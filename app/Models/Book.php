@@ -14,12 +14,12 @@ class Book extends Model
 
     protected $guarded = [];
 
-//    do i need this slug code?
-//    public static function find($slug) {
-//
-//    }
 
 // for searching books
+//    public static function where(string $string, $id)
+//    {
+//    }
+
     public function scopeFilter($query)
     {
         if (request('search')) {
