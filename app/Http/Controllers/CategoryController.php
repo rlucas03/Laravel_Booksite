@@ -122,15 +122,16 @@ class CategoryController extends Controller
     {
         // 1. fetch existing books from the target category
         // 2. change the category for all fetched books to alternative category
+        $category->books()->update(['category_id' => $request->alt_category_id]);
+
         // 3. delete the target category
-        $categoryBooks = $category->books()->get();
-
-        foreach ($categoryBooks as $books) {
-            Book::where('category_id',$books->category_id)->update(['category_id' => 34]);
-        }
-
         $category->delete();
         return redirect('categories');
     }
 }
 
+// comments table
+// a book can have many comments. one to many
+
+
+// comments on books one relationship in mind

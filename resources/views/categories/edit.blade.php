@@ -37,19 +37,7 @@
 
 {{--            <div class="mt-4 p-2">--}}
 
-{{--                <x-input-label for="Category" :value="__('Change books category')"/>--}}
 
-{{--                <select name="category_id" id="category_id">--}}
-{{--                    @php--}}
-{{--                        $categories = \App\Models\Category::all();--}}
-{{--                    @endphp--}}
-
-{{--                    @foreach ($categories as $category)--}}
-{{--                        <option--}}
-{{--                            value="{{ $category->id }}"--}}
-{{--                        >{{ $category->name }} </option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
 
 
 {{--                <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>--}}
@@ -63,8 +51,22 @@
         <form action="{{ route('categories.destroy', $category) }}" method="POST">
             @method('delete')
             @csrf
+            <x-input-label for="Category" :value="__('Select Alternative Category')"/>
+
+            <select name="alt_category_id" id="category_id">
+
+                @foreach (\App\Models\Category::all() as $alt_category)
+
+                    @if($alt_category->id != $category->id)
+                        <option
+                            value="{{ $alt_category->id }}"
+                        >{{ $alt_category->name }} </option>
+                    @endif
+                @endforeach
+            </select>
             <button type="submit"
-                    onclick="return confirm('WARNING, are you sure you want to delete this Category? This may cause errors on the website')"
+                    onclick="return confirm('WARNING, are you sure you want to delete this Category? ' +
+                     'This may cause errors on the website')"
                     class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800
                       focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm
                        px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white

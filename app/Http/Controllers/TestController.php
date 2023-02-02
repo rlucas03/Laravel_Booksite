@@ -12,8 +12,9 @@ class TestController extends Controller
   public function index()
   {
 
-    $users = User::whereDoesntHave('books')->get();
-    dd($users);
+      $category = Category::find(1);
+      dd($category->books()->update(['category_id', 34]));
+
 
 //    select users that  have 0 books and show them
 

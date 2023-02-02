@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 
+
+
+
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
@@ -23,10 +26,10 @@
             @auth
                 {{--                                <a href="{{ url('/dashboard') }}" class="text-sm underline text-white">Dashboard</a>--}}
             @else
-                <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm text-black underline">Log in</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-white underline">Register</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-black underline">Register</a>
                 @endif
             @endauth
         </div>
@@ -51,7 +54,6 @@
                     {{ $slot }}
                 </div>
             </div>
-
         </div>
 
     </main>

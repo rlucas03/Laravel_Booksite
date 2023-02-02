@@ -49,6 +49,8 @@ Route::resource('books', BookController::class); // was can:edit-books
 
 Route::get('/', [BookController::class, 'welcome'])->name('welcome');
 
+Route::get('test', [TestController::class, 'index']);
+
 //});
 
 

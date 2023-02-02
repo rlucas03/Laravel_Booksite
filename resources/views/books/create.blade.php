@@ -5,6 +5,9 @@
         {{--            {{ __('New book') }}--}}
         {{--        </h2>--}}
     </x-slot>
+    <h2 class="mt-1 font-semibold text-xl leading-tight inline-flex mx-2 text-black">
+        {{ __('My Books') }}
+    </h2>
     <section class="mx-7">
         <form class="rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('books.store')}}"
               enctype="multipart/form-data">

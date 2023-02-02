@@ -11,14 +11,6 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
-
-//    $category->books // get multiple
-//   A category has many books
-// on the flip side a book belongs to a category
-    public static function find(mixed $cat_id)
-    {
-    }
-
     public function books()
     {
         return $this->hasMany(Book::class);

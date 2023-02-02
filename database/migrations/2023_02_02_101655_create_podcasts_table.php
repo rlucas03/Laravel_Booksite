@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
+//            podcasts are deleted when their parent users are deleted
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id');
-            $table->string('uuid');
-            $table->string('slug')->unique();
-            $table->string('title');
-            $table->string('thumbnail')->nullable();
-            $table->text('description');
-            $table->string('pdf')->nullable();
+            $table->string('title')->unique();
+            $table->string('description');
+            $table->string('author')->unique();
+            $table->string('podcast');
             $table->timestamps();
-            $table->timestamp('published_at')->nullable();
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('podcasts');
     }
 };
